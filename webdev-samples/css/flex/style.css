@@ -1,0 +1,57 @@
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+.bordered {
+    border: solid 1px red;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+    margin: 10px;
+}
+
+.rect {
+    width: 150px;
+    height: 100px;
+    padding: 30px;
+    margin: 10px;
+}
+
+.bigbox {
+    width: 600px;
+    height: 300px;
+}
+
+.inlineblock {
+    display: inline-block;
+}
+
+.inlineflex {
+    display: inline-flex;
+}
+
+.flex-row-nowrap {
+    display: flex;
+}
+
+.flex-row-wrap {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.flex-row-wrap-baseline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+}
+
+.flex-column-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

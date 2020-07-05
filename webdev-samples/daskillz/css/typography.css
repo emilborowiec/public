@@ -1,0 +1,33 @@
+html {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Odibee Sans', cursive;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0px;
+}
+h2 {
+    font-size: 2.5em;
+}
+h3 {
+    font-size: 2em;
+}
+
+.index-category {
+    font-size: 1.2em;
+}
+
+#index a {
+    text-decoration: none;
+    color: #161511;
+}
+
+#index a:hover {
+    color: #C20116;
+}

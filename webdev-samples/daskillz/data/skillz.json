@@ -1,0 +1,229 @@
+[
+    {
+        "name": "Coding",
+        "description": "Coding in a programming language",
+        "category": "programming",
+        "technologies": [
+            { "name": "C#", "level": 9 }, 
+            { "name": "Java", "level": 9 }, 
+            { "name": "JavaScript", "level": 6 },
+            { "name": "TypeScript", "level": 4 },
+            { "name": "C++", "level": 4 }
+        ],
+        "skills": [
+            "Knows general syntax",
+            "Knows flow control statements",
+            "Knows reserved keywords and understains their effect",
+            "Knows available operators and understands their effect",
+            "Effectively uses core features of standard library"
+        ]
+    },
+    {
+        "name": "VCS",
+        "description": "Using version control systems",
+        "category": "programming",
+        "technologies": [
+            { "name": "Git", "level": 7 }
+        ],
+        "skills":[]
+    },
+    {
+        "name": "IDE",
+        "description": "Using IDE and code editors",
+        "category": "programming",
+        "technologies": [
+            { "name": "Rider", "level": 9}, 
+            { "name": "Idea", "level": 9 },
+            { "name": "Visual Studio Code", "level": 8 },
+            { "name": "Visual Studio", "level": 4 }
+        ],
+        "skills":[]
+    },
+    {
+        "name": "Unit Testing",
+        "description": "Writing automatic tests using a framework",
+        "category": "programming",
+        "technologies": [
+            { "name": "xUnit" }, { "name": "NSubstitute" }, { "name": "JUnit" }, { "name": "Mockito" }, { "name": "Mountebank" }, { "name": "WireMock" }
+        ],
+        "skills": [
+            "Writes effective unit tests",
+            "Writes effective integration tests",
+            "Creates test environments using service virtualization toolss",
+            "Applies Test Driven Development practices when feasible"
+        ]
+    },
+    {
+        "name": "Databases",
+        "description": "Writing database queries and implementing data access layers",
+        "category": "programming",
+        "technologies": [
+            { "name": "All major SQL databases" }, { "name": "Entity Framework" }, { "name": "(N)Hibernate" }, { "name": "Spring Data" }, { "name": "MongoDB"}, { "name": "DynamoDB" }
+        ],
+        "skills": [
+            "Designs effective data models for SQL",
+            "Understands concepts of spatial databases, designs and uses spatial databases effectively",
+            "Can choose optimal persistent storage type for specific use case"
+        ]
+    },
+    {
+        "name": "Desktop Applications",
+        "description": "Programming desktop applications",
+        "category": "programming",
+        "technologies": [
+            { "name": "WPF" }
+        ],
+        "skills": [
+            "Knows key concepts of the framework",
+            "Knows how to build custom controls and widgets",
+            "Builds desktop applications structured according to MVC or MVVM patterns"
+        ]
+    },
+    {
+        "name": "Web Applications",
+        "description": "Programming web applications",
+        "category": "programming",
+        "technologies": [
+            { "name": "HTML5" }, { "name": "CSS3" }, { "name": "JavaScript" }, { "name": "JQuery" }, { "name": "Angular" }, { "name": "Razor Pages" }, { "name": "Blazor"}
+        ],
+        "skills": [
+            "Understands core concepts of given technology"
+        ]
+    },
+    {
+        "name": "Web Services",
+        "description": "Programming web services",
+        "category": "programming",
+        "technologies": [
+            { "name": "ASP.NET Core" }, { "name": "NodeJS" }, { "name": "Spring Boot" }
+        ],
+        "skills": [
+            "Understands core concepts of given framework"
+        ]
+    },
+    {
+        "name": "Message-Driven Applications",
+        "description": "Programming message-driven applications",
+        "category": "programming",
+        "technologies": [
+            { "name": "Amazon SNS" }, { "name": "Amazon SQS" }, { "name": "Amazon Lambda" }, { "name": "ActiveMQ" }
+        ],
+        "skills": [
+            ""
+        ]
+    },
+    {
+        "name": "Software design",
+        "description": "Preparing software design",
+        "category": "design",
+        "technologies": [
+            { "name": "Imperative" }, { "name": "Functional" }, { "name": "Object Oriented"}
+        ],
+        "skills":[
+
+        ]
+    },
+    {
+        "name": "Architecture",
+        "description": "Preparing system architecture",
+        "category": "design",
+        "technologies": [
+            { "name": "MVC" }, { "name": "MVVM" }, { "name": "Layered architecture" }, { "name": "Microservices" }, { "name": "3-Tier" }
+        ],
+        "skills":[]
+    },
+    {
+        "name": "API Design",
+        "description": "Designing APIs",
+        "category":"design",
+        "technologies": [],
+        "skills":[]
+    },
+    {
+        "name": "UX Design",
+        "description": "Designing UX",
+        "category":"design",
+        "technologies": [],
+        "skills":[]
+    },
+    {
+        "name": "GUI Design",
+        "description": "Designing GUIs",
+        "category":"design",
+        "technologies": [],
+        "skills":[]
+    },
+    {
+        "name": "Cloud",
+        "description": "Developing cloud infrastructures",
+        "category": "operations",
+        "technologies": [ 
+            { "name": "AWS" }
+        ],
+        "skills":[
+            "Writing infrastructure as code"
+        ]
+    },
+    {
+        "name": "Containers",
+        "description": "Developing contenerized environments",
+        "category": "operations",
+        "technologies": [],
+        "skills":[
+            "Writing infrastructure as code"
+        ]
+    },
+    {
+        "name": "CI/CD",
+        "description": "Developing CI/CD pipelines",
+        "category": "operations",
+        "technologies": [
+            { "name": "Jenkins" }, { "name": "CircleCI" }, { "name": "TeamCity" }
+        ],
+        "skills":[]
+    },
+    {
+        "name": "SCM",
+        "description": "Automating software configuration management",
+        "category":"operations",
+        "technologies": [],
+        "skills":[]
+    },
+    {
+        "name": "Analytics",
+        "description": "Setting up monitoring and analytics",
+        "category":"operations",
+        "technologies": [
+            { "name": "AppDynamics" }, { "name": "CloudWatch" }
+        ],
+        "skills":[]
+    },
+    {
+        "name": "Iterative development",
+        "description": "Developing software according to agile approaches",
+        "category": "methodologies",
+        "technologies": [],
+        "skills":[]
+    },
+    {
+        "name": "Test Driven Development",
+        "description": "Developing software by writing tests before implementation",
+        "category": "methodologies",
+        "technologies": [],
+        "skills":[]
+    },
+    {
+        "name": "Code reviews",
+        "description": "Code reviews",
+        "category": "interpersonal",
+        "technologies": [],
+        "skills":[]
+    },
+    {
+        "name": "Iterative development",
+        "description": "Iterative development",
+        "category": "interpersonal",
+        "technologies": [],
+        "skills":[]
+    }
+]

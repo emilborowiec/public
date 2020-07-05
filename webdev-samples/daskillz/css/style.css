@@ -1,0 +1,92 @@
+/*
+base        #ffffff;
+back        #F5F7F7;
+dark        #161511;
+light       #C8D3D5;
+main        #C20116;
+accent      #6290C3;
+*/
+
+html {
+    background-color: #F5F7F7;
+    color: #161511;
+}
+
+header, footer {
+    background-color: #C20116;
+}
+
+#title {
+    text-align: center;
+    padding-top: 2px;
+    background-color: #C8D3D5;
+}
+
+main {
+    background-color: #ffffff;
+}
+
+#sidebar {
+    background-color: #C8D3D5;
+}
+
+.index > a {
+    text-decoration: none;
+    color: black;
+}
+
+#showroom {
+    padding: 0px 8px;
+}
+
+h2 {
+    border-top: #C20116 1px;
+}
+
+.category-label > img {
+    vertical-align: middle;
+}
+
+#showroom > article > h2 {
+    text-align: center;
+}
+
+.tech-article img {
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 12px 12px 0px;
+    margin: 0;
+}
+
+li > ul {
+    padding: 4px;
+}
+
+li {
+    padding-left: 1em; 
+    text-indent: -.7em;
+}
+
+li::before {
+    padding-right:7px;
+    content: "u"; font-family:"Wingdings";
+    color: #C20116; /* or whatever color you prefer */
+}
+
+li > ul > li::before {
+    content: "w"; font-family:"Wingdings";
+    color: #C20116; /* or whatever color you prefer */    
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #C20116;
+    margin: 1em 0;
+    padding: 0;
+}

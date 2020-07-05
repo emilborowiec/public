@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>flex</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <p>
+        On to flex displays. Let's say we have such boxes of content that we want to distribute in some way:
+        <div class="bordered square">
+          Box 1.
+        </div>
+        <span class="bordered">
+          Box 2. This one is inline and autosized to the content.
+        </span>
+        <div class="bordered rect">
+          Box 3
+        </div>
+        
+        Let's see what happens if we put them all in one row on a too small of a container.
+        <div class="flex-row-nowrap bordered bigbox">
+            <div class="bordered square">
+                Box 1.
+              </div>
+              <span class="bordered">
+                Box 2. This one is inline and autosized to the content.
+              </span>
+              <div class="bordered rect">
+                Box 3
+              </div>      
+        </div>
+        Interesting. All the boxes were shrinked a bit to fit the content. Not sure why span takes the whole vertical space though. 
+        I wonder if it will allow second row of content. Let's see.
+        <div class="flex-row-wrap bordered bigbox">
+            <div class="bordered square">
+                Box 1.
+              </div>
+              <span class="bordered">
+                Box 2. This one is inline and autosized to the content.
+              </span>
+              <div class="bordered rect">
+                Box 3
+              </div>      
+        </div>
+        Ok. So as it appears the span takes height up to the next row. I guess it depends on the alignment of items. Right 'stretch' is default. Let's play around with it.
+        <div class="flex-row-wrap-baseline bordered bigbox">
+            <div class="bordered square">
+                Box 1.
+              </div>
+              <span class="bordered">
+                Box 2. This one is inline and autosized to the content.
+              </span>
+              <div class="bordered rect">
+                Box 3
+              </div>      
+        </div>
+        Now let's try to get those items to go from top to bottom on the right side of the container.
+        <div class="flex-column-right bordered bigbox">
+            <div class="bordered square">
+                Box 1.
+              </div>
+              <span class="bordered">
+                Box 2. This one is inline and autosized to the content.
+              </span>
+              <div class="bordered rect">
+                Box 3
+              </div>      
+        </div>
+    </p>
+  </body>
+</html>

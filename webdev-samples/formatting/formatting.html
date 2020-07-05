@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>formatting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../template.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="margin8">
+        <a href="../index.html">Back to index</a>
+        <h1>Content formatting with html</h1>
+        <p>HTML5 comes with many new elements for formatting page content. Here we shall explore both old and new tags
+            to see what results they
+            yield. Most if not all of them can be replaced with css style and layout, but that results in more code.
+            Think of those tags as of
+            ready-made components that do what we need while hiding the details. Using them effectively can make our
+            source code tidier and easier to maintain.</p>
+    </div>
+    <div class="margin8 topborder">
+        <h2>Text formatting elements</h2>
+        <p>Those elements are meant to apply quick stylying on a short section of text. Browsers implement them by
+            applying some default CSS values to their contents, which can be overridden by any stylesheet applied by the
+            page.
+        </p>
+        <p>This means that most of those elements become ineffective, or yield unpredictable results if the page uses
+            one of very popular CSS reset scripts.
+        </p>
+        <p>Here are the default CSS values applied by major browsers:
+        </p>
+        <pre class="code"><code>
+b {
+    font-weight: bold;
+}
+
+blockquote {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+cite {
+    font-style: italic;
+}
+
+code {
+    font-family: monospace;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+dfn {
+    font-style: italic;
+}
+
+em {
+    font-style: italic;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h4 {
+    display: block;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h5 {
+    display: block;
+    font-size: .83em;
+    margin-top: 1.67em;
+    margin-bottom: 1.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h6 {
+    display: block;
+    font-size: .67em;
+    margin-top: 2.33em;
+    margin-bottom: 2.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+i {
+    font-style: italic;
+}
+
+ins {
+    text-decoration: underline;
+}
+
+kbd {
+    font-family: monospace;
+}
+
+mark {
+    background-color: yellow;
+    color: black;
+}
+
+s {
+    text-decoration: line-through;
+}
+
+samp {
+    font-family: monospace;
+}
+
+small {
+    font-size: smaller;
+}
+
+strike {
+    text-decoration: line-through;
+}
+
+strong {
+    font-weight: bold;
+}
+
+sub {
+    vertical-align: sub;
+    font-size: smaller;
+}
+
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+u {
+    text-decoration: underline;
+}
+
+var {
+    font-style: italic;
+}
+        </code></pre>
+        <p>
+            Examples: 
+        </p>
+        <div class="example-demo">
+            Here comes <b>bold</b> text<br>
+            Here comes <strong>strong</strong> text<br>
+            Here comes <i>italics</i> text<br>
+            Here comes <em>emphasized</em> text<br>
+            Here comes <sup>superscripted</sup> text<br>
+            Here comes <sub>subscripted</sub> text<br>
+            Here comes <small>small</small> text<br>
+            Here comes <ins>inserted</ins> text<br>
+            Here comes <del>deleted</del> text<br>
+            Here comes <mark>marked</mark> text<br>
+            Here comes <code>code</code> text
+        </div>
+    </div>
+    <div class="margin8 topborder">
+        <h2>Quotation elements</h2>
+        <p>These elements are similar to formatting elements but also do a little bit more. They are as well typically affected by reset scripts.</p>
+        <h3>q - simple quotation</h3>
+        <p>Simple quotation element adds quote characters around the content</p>
+        <pre class="code"><code>
+He said: &lt;q>I'm going home&lt;/q>
+        </code></pre>
+        <p>Gets rendered like this:</p>
+        <div class="example-demo">
+            He said: <q>I'm going home</q>
+        </div>
+        <h3>cite - simple citation</h3>
+        <p>Simple citation element renders in italics</p>
+        <pre class="code"><code>
+He said: &lt;cite>I'm going home&lt;/cite>
+        </code></pre>
+        <p>Gets rendered like this:</p>
+        <div class="example-demo">
+            He said: <cite>I'm going home</cite>
+        </div>
+        <h3>blockquote - bigger quote block</h3>
+        <p>This one can be used for multi-line or multi-paragraph passages</p>
+        <pre class="code"><code>
+And here's a sample block quote:
+&lt;blockquote cite="http://www.ponderingprogrammer.net">
+    &lt;p>
+        Last two weeks didn’t give me much time for hobby programming.
+    &lt;/p>
+    &lt;p>
+        The citation attribute is not rendred but is used by search engines.
+    &lt;/p>
+&lt;/blockquote>    
+        </code></pre>
+        <p>Yields:</p>
+        <div class="example-demo">
+            And here's a sample block quote:
+            <blockquote cite="http://www.ponderingprogrammer.net">
+                <p>
+                    Last two weeks didn’t give me much time for hobby programming.
+                </p>
+                <p>
+                    The citation attribute is not rendred but is used by search engines.
+                </p>
+            </blockquote>
+        </div>
+    </div>
+</body>
+</html>

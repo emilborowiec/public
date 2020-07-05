@@ -1,0 +1,64 @@
+html {
+    box-sizing: content-box;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0px;
+    min-height: 100vh;
+}
+
+header img {
+    margin: 8px;
+    vertical-align: middle;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 84px);
+}
+
+@media (min-width: 768px) {
+    main {
+        display: grid;
+        max-width: 1260px;
+        margin-top: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-rows: auto;
+        grid-template-columns: 360px auto;
+        grid-template-areas: 
+            "sidebar showroom"
+    }
+}
+
+footer {
+    box-sizing: border-box; /* don't understand why is this not inherited form html element */
+    height: 60px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+#sidebar {
+    grid-area: sidebar;
+}
+
+#showroom {
+    grid-area: showroom;
+}
+
+#showroom > article {
+    min-height: 80vh;
+}
+
+.tech-article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tech-article > span {
+    flex: 2;
+}
