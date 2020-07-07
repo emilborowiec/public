@@ -18,6 +18,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.locationtech.jts</groupId>
+            <artifactId>jts-core</artifactId>
+            <version>1.16.1</version>
+        </dependency>
+        <dependency>
             <groupId>net.ponderingprogrammer</groupId>
             <artifactId>map2d</artifactId>
             <version>0.1</version>
