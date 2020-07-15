@@ -1,4 +1,4 @@
-﻿using PonderingProgrammer.Map2d;
+using PonderingProgrammer.Map2d;
 using System.Linq;
 using Xunit;
 
@@ -6,7 +6,7 @@ namespace PonderingProgrammer.Map2dTests
 {
     public class FixedSquareMap2dTest
     {
-        private ConcreteFixedSquareMap2d _map;
+        private readonly ConcreteFixedSquareMap2d _map;
 
         public FixedSquareMap2dTest()
         {
