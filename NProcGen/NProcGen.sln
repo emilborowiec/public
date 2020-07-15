@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PonderingProgrammer.Map2d", "src\PonderingProgrammer.Map2d\PonderingProgrammer.Map2d.csproj", "{A5D8BE40-F03B-4E74-BF54-DA6B8BC28CEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.Map2dTests", "tests\PonderingProgrammer.Map2dTests\PonderingProgrammer.Map2dTests.csproj", "{EA206B99-383A-4049-8BC5-814981184030}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5D8BE40-F03B-4E74-BF54-DA6B8BC28CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5D8BE40-F03B-4E74-BF54-DA6B8BC28CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5D8BE40-F03B-4E74-BF54-DA6B8BC28CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5D8BE40-F03B-4E74-BF54-DA6B8BC28CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA206B99-383A-4049-8BC5-814981184030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA206B99-383A-4049-8BC5-814981184030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA206B99-383A-4049-8BC5-814981184030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA206B99-383A-4049-8BC5-814981184030}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {41401C5D-2346-4DB1-9FE4-B52085142104}
+	EndGlobalSection
+EndGlobal

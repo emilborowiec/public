@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+	  <OutDir>$(SolutionDir)artifacts\$(MSBuildProjectName)\$(Configuration)</OutDir>
+  </PropertyGroup>
+	
 </Project>
