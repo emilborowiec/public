@@ -1,5 +1,9 @@
 package net.ponderingprogrammer.map2d;
 
+import net.ponderingprogrammer.map2d.Cell;
+import net.ponderingprogrammer.map2d.CellGraph;
+import net.ponderingprogrammer.map2d.FixedSquareMap2d;
+
 import java.util.Collection;
 
 /**

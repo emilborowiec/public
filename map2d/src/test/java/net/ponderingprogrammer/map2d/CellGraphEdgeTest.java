@@ -1,8 +1,7 @@
 package net.ponderingprogrammer.map2d;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CellGraphEdgeTest {
 
@@ -25,10 +24,10 @@ class CellGraphEdgeTest {
         var c3c4 = new CellGraphEdge<>(c1, c2);
         var c3c4Dir = new CellGraphEdge<>(c1, c2, true);
 
-        assertEquals(c1c2, c1c2Clone);
-        assertEquals(c1c2, c2c1);
-        assertEquals(c1c2Dir, c1c2DirClone);
-        assertNotEquals(c1c2, c1c2Dir);
-        assertNotEquals(c1c2Dir, c2c1Dir);
+        Assertions.assertEquals(c1c2, c1c2Clone);
+        Assertions.assertEquals(c1c2, c2c1);
+        Assertions.assertEquals(c1c2Dir, c1c2DirClone);
+        Assertions.assertNotEquals(c1c2, c1c2Dir);
+        Assertions.assertNotEquals(c1c2Dir, c2c1Dir);
     }
 }
