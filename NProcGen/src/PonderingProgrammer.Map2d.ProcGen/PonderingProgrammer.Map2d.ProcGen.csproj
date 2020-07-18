@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PonderingProgrammer.Map2d\PonderingProgrammer.Map2d.csproj" />
+  </ItemGroup>
+
 </Project>

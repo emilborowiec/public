@@ -70,12 +70,12 @@ namespace PonderingProgrammer.Map2dTests
         public void GetBounds()
         {
             var bounds = _map.GetBounds();
-            Assert.Equal(6, bounds.width);
-            Assert.Equal(4, bounds.height);
-            Assert.Equal(0, bounds.minX);
-            Assert.Equal(0, bounds.minY);
-            Assert.Equal(5, bounds.maxX);
-            Assert.Equal(3, bounds.maxY);
+            Assert.Equal(6, bounds.Width);
+            Assert.Equal(4, bounds.Height);
+            Assert.Equal(0, bounds.MinX);
+            Assert.Equal(0, bounds.MinY);
+            Assert.Equal(5, bounds.MaxX);
+            Assert.Equal(3, bounds.MaxY);
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace PonderingProgrammer.Map2d.ProcGen
+namespace PonderingProgrammer.Map2d
 {
-    public enum Outline
+    public enum AspectType
     {
         SQUARE,
         LANDSCAPE,

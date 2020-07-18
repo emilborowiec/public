@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace PonderingProgrammer.Map2d
@@ -17,8 +17,9 @@ namespace PonderingProgrammer.Map2d
         IEnumerable<Cell<T>> GetCells();
         IEnumerable<Cell<T>> GetCellsRowMajor();
 
-        Bounds GetBounds();
+        AABox GetBounds();
 
+        IEnumerable<Cell<T>> FindCells(Predicate<Cell<T>> predicate);
         IEnumerable<Cell<T>> FindCells(Predicate<T> predicate);
 
         IEnumerable<Cell<T>> FindAdjacentCells(int x, int y);

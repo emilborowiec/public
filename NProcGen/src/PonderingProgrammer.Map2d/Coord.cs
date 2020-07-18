@@ -1,14 +1,14 @@
-﻿namespace PonderingProgrammer.Map2d
+namespace PonderingProgrammer.Map2d
 {
     public struct Coord
     {
-        public readonly int x;
-        public readonly int y;
+        public readonly int X;
+        public readonly int Y;
 
         public Coord(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
     }
 }
