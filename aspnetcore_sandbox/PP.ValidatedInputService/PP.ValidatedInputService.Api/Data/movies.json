@@ -1,0 +1,122 @@
+[
+    {
+        "title":"Willow",
+        "year":1988,
+        "release":"1988-05-20",
+        "runtime":126,
+        "director":"Ron Howard",
+        "storyBy":"George Lucas",
+        "cast":["Val Kilmer","Joannne Whalley","Warwick Davis"],
+        "genres":["Action", "Adventure", "Drama", "Fantasy", "Romance"]
+    },
+    {
+        "title":"1917",
+        "year":2019,
+        "release":"2020-01-10",
+        "runtime":119,
+        "director":"Sam Mendes",
+        "storyBy":"Sam Mendes",
+        "cast":["Dean-Charles Chapman","George MacKay","Colin Firth"],
+        "genres":["Drama", "War"]
+    },
+    {
+        "title":"Bad Boys",
+        "year":1995,
+        "release":"1995-04-07",
+        "runtime":119,
+        "director":"Michael Bay",
+        "storyBy":"George Gallo",
+        "cast":["Will Smith","Martin Lawrence","Lisa Boyle"],
+        "genres":["Action", "Comedy", "Crime"]
+    },
+    {
+        "title":"Gladiator",
+        "year":2000,
+        "release":"2000-05-05",
+        "runtime":155,
+        "director":"Ridley Scott",
+        "storyBy":"David Franzoni",
+        "cast":["Russel Crowe","Joaquin Phoenix","Connie Nielsen"],
+        "genres":["Action", "Adventure", "Drama"]
+    },
+    {
+        "title":"The Karate Kid",
+        "year":1984,
+        "release":"1984-06-22",
+        "runtime":126,
+        "director":"John G. Avildsen",
+        "storyBy":"Robert Mark Kamen",
+        "cast":["Ralph Macchio","Pat Morita","Elisabeth Shue"],
+        "genres":["Action", "Drama", "Family"]
+    },
+    {
+        "title":"Love Actually",
+        "year":2003,
+        "release":"2003-11-03",
+        "runtime":135,
+        "director":"Richard Curtis",
+        "storyBy":"Richard Curtis",
+        "cast":["Hugh Grant","Martine McCutcheon","Liam Neeson"],
+        "genres":["Comedy", "Drama", "Romance"]
+    },
+    {
+        "title":"The Lord of the Rings: The Fellowship of the Ring",
+        "year":2001,
+        "release":"2001-12-19",
+        "runtime":178,
+        "director":"Peter Jackson",
+        "storyBy":"J.R.R. Tolkien",
+        "cast":["Elijah Wood","Ian McKellen","Orlando Bloom"],
+        "genres":["Adventure", "Drama", "Fantasy"]
+    },
+    {
+        "title":"The Lord of the Rings: The Two Towers",
+        "year":2002,
+        "release":"2002-12-18",
+        "runtime":189,
+        "director":"Peter Jackson",
+        "storyBy":"J.R.R. Tolkien",
+        "cast":["Elijah Wood","Ian McKellen","Orlando Bloom"],
+        "genres":["Adventure", "Drama", "Fantasy"]
+    },
+    {
+        "title":"The Lord of the Rings: The Return of the King",
+        "year":2003,
+        "release":"2003-12-17",
+        "runtime":201,
+        "director":"Peter Jackson",
+        "storyBy":"J.R.R. Tolkien",
+        "cast":["Elijah Wood","Ian McKellen","Orlando Bloom"],
+        "genres":["Adventure", "Drama", "Fantasy"]
+    },
+    {
+        "title":"The Hobbit: An Unexpected Journey",
+        "year":2012,
+        "release":"2012-12-14",
+        "runtime":169,
+        "director":"Peter Jackson",
+        "storyBy":"Fran Walsh",
+        "cast":["Martin Freeman","Ian McKellen","Richard Armitage"],
+        "genres":["Adventure", "Family", "Fantasy"]
+    },
+    {
+        "title":"The Hobbit: The Desolation of Smaug",
+        "year":2013,
+        "release":"2013-12-13",
+        "runtime":161,
+        "director":"Peter Jackson",
+        "storyBy":"Fran Walsh",
+        "cast":["Martin Freeman","Ian McKellen","Richard Armitage"],
+        "genres":["Adventure", "Fantasy"]
+    },
+    {
+        "title":"The Hobbit: The Battle of the Five Armies",
+        "year":2014,
+        "release":"2014-12-17",
+        "runtime":144,
+        "director":"Peter Jackson",
+        "storyBy":"Fran Walsh",
+        "cast":["Martin Freeman","Ian McKellen","Richard Armitage"],
+        "genres":["Adventure", "Family", "Fantasy"]
+    }
+]
