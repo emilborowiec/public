@@ -18,7 +18,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.Map2d.ProcGen.Tests", "tests\PonderingProgrammer.Map2d.ProcGen.Tests\PonderingProgrammer.Map2d.ProcGen.Tests.csproj", "{A498C1FB-EA09-4817-AE25-D25609B3F465}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PonderingProgrammer.Map2d.ProcGen.Tests", "tests\PonderingProgrammer.Map2d.ProcGen.Tests\PonderingProgrammer.Map2d.ProcGen.Tests.csproj", "{A498C1FB-EA09-4817-AE25-D25609B3F465}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.PoppingRectanglesSample", "samples\PonderingProgrammer.PoppingRectanglesSample\PonderingProgrammer.PoppingRectanglesSample.csproj", "{AC3F7FFD-E315-4375-84AC-16D2CBB73CE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{86960D7D-509D-4C69-9057-95362FB75A65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +46,10 @@ Global
 		{A498C1FB-EA09-4817-AE25-D25609B3F465}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A498C1FB-EA09-4817-AE25-D25609B3F465}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A498C1FB-EA09-4817-AE25-D25609B3F465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC3F7FFD-E315-4375-84AC-16D2CBB73CE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3F7FFD-E315-4375-84AC-16D2CBB73CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC3F7FFD-E315-4375-84AC-16D2CBB73CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3F7FFD-E315-4375-84AC-16D2CBB73CE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +59,7 @@ Global
 		{EA206B99-383A-4049-8BC5-814981184030} = {CA5ACE5F-0BFA-435F-89DA-D399EA2928C8}
 		{CE9C3E38-E1D5-4180-B050-A700EDA74B0E} = {A6CA77C9-F043-4D2A-AEAD-6F447BC5215F}
 		{A498C1FB-EA09-4817-AE25-D25609B3F465} = {CA5ACE5F-0BFA-435F-89DA-D399EA2928C8}
+		{AC3F7FFD-E315-4375-84AC-16D2CBB73CE8} = {86960D7D-509D-4C69-9057-95362FB75A65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {41401C5D-2346-4DB1-9FE4-B52085142104}
