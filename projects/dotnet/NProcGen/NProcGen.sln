@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.NtsToSv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.NtsToSvgSample", "samples\PonderingProgrammer.NtsToSvgSample\PonderingProgrammer.NtsToSvgSample.csproj", "{7E589467-1C1E-4AAA-B262-49DFE424F324}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.NProcGen.Web", "src\PonderingProgrammer.NProcGen.Web\PonderingProgrammer.NProcGen.Web.csproj", "{352DD18C-1F8F-45E3-8191-8A82B4DD5D0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{7E589467-1C1E-4AAA-B262-49DFE424F324}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E589467-1C1E-4AAA-B262-49DFE424F324}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E589467-1C1E-4AAA-B262-49DFE424F324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{352DD18C-1F8F-45E3-8191-8A82B4DD5D0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{352DD18C-1F8F-45E3-8191-8A82B4DD5D0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{352DD18C-1F8F-45E3-8191-8A82B4DD5D0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{352DD18C-1F8F-45E3-8191-8A82B4DD5D0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{AC3F7FFD-E315-4375-84AC-16D2CBB73CE8} = {86960D7D-509D-4C69-9057-95362FB75A65}
 		{1BE8811D-3327-454A-9462-8387E819AF8F} = {A6CA77C9-F043-4D2A-AEAD-6F447BC5215F}
 		{7E589467-1C1E-4AAA-B262-49DFE424F324} = {86960D7D-509D-4C69-9057-95362FB75A65}
+		{352DD18C-1F8F-45E3-8191-8A82B4DD5D0E} = {A6CA77C9-F043-4D2A-AEAD-6F447BC5215F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {41401C5D-2346-4DB1-9FE4-B52085142104}
