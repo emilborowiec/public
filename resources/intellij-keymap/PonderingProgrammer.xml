@@ -46,9 +46,7 @@
   <action id="GotoPreviousError">
     <keyboard-shortcut first-keystroke="alt page_up" />
   </action>
-  <action id="IntroduceConstant">
-    <keyboard-shortcut first-keystroke="ctrl alt e" />
-  </action>
+  <action id="IntroduceConstant" />
   <action id="IntroduceField">
     <keyboard-shortcut first-keystroke="shift ctrl e" />
   </action>
