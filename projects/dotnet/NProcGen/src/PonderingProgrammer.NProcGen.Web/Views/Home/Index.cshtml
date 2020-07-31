@@ -1,11 +1,14 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
+@model MapViewModel
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <a asp-action="GenerateMap">Generate map</a>
-    <svg style="background-color: lightgray">
-        
-    </svg>
+    <div style="width: 100vw; height: 1000px; background-color: lightgray">
+        <svg viewBox="0 0 5000 5000" overflow="auto" width="100%" height="100%">
+            @Html.Raw(Model?.Svg)
+        </svg>
+    </div>
 </div>

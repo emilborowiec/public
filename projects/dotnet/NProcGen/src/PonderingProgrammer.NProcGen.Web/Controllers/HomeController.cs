@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -40,12 +41,16 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
         {
             var map = _service.GenerateSampleMap();
             var cellSize = 50;
-            var boundarySvg = new SvgRectangle();
-            boundarySvg.X = 0;
-            boundarySvg.Y = 0;
-            boundarySvg.Width = map.GetBounds().Width * cellSize;
-            boundarySvg.Height = map.GetBounds().Height * cellSize;
-            
+            var boundarySvg = new SvgRectangle
+            {
+                X = 0, 
+                Y = 0, 
+                Width = map.GetBounds().Width * cellSize, 
+                Height = map.GetBounds().Height * cellSize,
+                Fill = new SvgColourServer(Color.Aqua),
+                Stroke = new SvgColourServer(Color.Black)
+            };
+
             var viewModel = new MapViewModel();
             viewModel.Svg = boundarySvg.GetXML();
             return View("Index", viewModel);
