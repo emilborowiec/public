@@ -13,6 +13,7 @@ namespace PonderingProgrammer.Map2d.FeatureObjects
             {
                 var fo = new FeatureObject(_factory.MapCellToPolygon(cell, scale),
                     cell.Value ? FeatureType.Open : FeatureType.Solid);
+                list.Add(fo);
             }
             return list;
         }

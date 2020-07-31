@@ -6,7 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PonderingProgrammer.Map2d.Svg;
 using PonderingProgrammer.NProcGen.Web.Models;
+using PonderingProgrammer.NtsToSvg;
 using Svg;
 
 namespace PonderingProgrammer.NProcGen.Web.Controllers
@@ -15,6 +17,7 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly GeneratorService _service = new GeneratorService();
+        private readonly Map2dSvgRenderer _renderer = new Map2dSvgRenderer();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -40,19 +43,10 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
         public IActionResult GenerateMap()
         {
             var map = _service.GenerateSampleMap();
-            var cellSize = 50;
-            var boundarySvg = new SvgRectangle
-            {
-                X = 0, 
-                Y = 0, 
-                Width = map.GetBounds().Width * cellSize, 
-                Height = map.GetBounds().Height * cellSize,
-                Fill = new SvgColourServer(Color.Aqua),
-                Stroke = new SvgColourServer(Color.Black)
-            };
+            var svg = _renderer.RenderToSvg(map);
 
             var viewModel = new MapViewModel();
-            viewModel.Svg = boundarySvg.GetXML();
+            viewModel.Svg = svg.GetHtml();
             return View("Index", viewModel);
         }
     }

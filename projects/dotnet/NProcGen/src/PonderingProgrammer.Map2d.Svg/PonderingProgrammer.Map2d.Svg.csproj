@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PonderingProgrammer.Map2d\PonderingProgrammer.Map2d.csproj" />
+      <ProjectReference Include="..\PonderingProgrammer.NtsToSvg\PonderingProgrammer.NtsToSvg.csproj" />
+    </ItemGroup>
+
+</Project>
