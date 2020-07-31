@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PonderingProgrammer.Map2d.ProcGen
 {
-    public class Map2dParams : IGenerationParams
+    public class Map2dParams : IValidatableObject
     {
         public int Width { get; set; }
         public int Height { get; set; }
@@ -10,13 +11,14 @@ namespace PonderingProgrammer.Map2d.ProcGen
 
         public int Area => Width * Height;
 
-        public virtual IList<string> GetValidationErrors()
+        public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            var list = new List<string>();
-            if (Width < 2) list.Add("width must be greater than 1");
-            if (Height < 2) list.Add("height must be greater than 1");
-            if (DesiredCellCount >= Area) list.Add("desiredCellCount cannot be greater than total area");
-            return list;
+            if (Width < 2) 
+                yield return new ValidationResult("width must be greater than 1", new []{nameof(Width)});
+            if (Height < 2) 
+                yield return new ValidationResult("height must be greater than 1", new []{nameof(Height)});
+            if (DesiredCellCount >= Area) 
+                yield return new ValidationResult("desiredCellCount cannot be greater than total area", new []{nameof(DesiredCellCount)});
         }
     }
 }

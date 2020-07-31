@@ -13,7 +13,7 @@ namespace PonderingProgrammer.Map2d.ProcGen
                 throw new ArgumentException("size must be > 0");
             }
 
-            if (maxSize >= minSize)
+            if (maxSize < minSize)
             {
                 throw new ArgumentException("maxSize must be >= minSize");
             }
@@ -28,7 +28,7 @@ namespace PonderingProgrammer.Map2d.ProcGen
                 throw new ArgumentException("size must be > 0");
             }
 
-            if (maxSize >= minSize)
+            if (maxSize < minSize)
             {
                 throw new ArgumentException("maxSize must be >= minSize");
             }

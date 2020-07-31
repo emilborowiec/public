@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PonderingProgrammer.Map2d.ProcGen
 {
@@ -8,14 +9,20 @@ namespace PonderingProgrammer.Map2d.ProcGen
         public int MinRectSize { get; set; }
         public int MaxRectSize { get; set; }
 
-        public override IList<string> GetValidationErrors()
+        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            var list = base.GetValidationErrors();
-            if (RectCount * MinRectSize >= Area) list.Add("Rectangles won't fit into the area");
-            if (MaxRectSize > Width) list.Add("maxRectSize cannot be greater than area width");
-            if (MaxRectSize > Height) list.Add("maxRectSize cannot be greater than area height");
-            if (MaxRectSize < MinRectSize) list.Add("maxRectSize cannot be lower than minRectSize");
-            return list;
+            foreach (var result in base.Validate(validationContext))
+            {
+                yield return result;
+            }
+            if (RectCount * MinRectSize >= Area) 
+                yield return new ValidationResult("Rectangles won't fit into the area", new []{nameof(RectCount)});
+            if (MaxRectSize > Width) 
+                yield return new ValidationResult("maxRectSize cannot be greater than area width", new []{nameof(MaxRectSize)});
+            if (MaxRectSize > Height) 
+                yield return new ValidationResult("maxRectSize cannot be greater than area height", new []{nameof(MaxRectSize)});
+            if (MaxRectSize < MinRectSize) 
+                yield return new ValidationResult("maxRectSize cannot be lower than minRectSize", new []{nameof(MaxRectSize)});
         }
     }
 }

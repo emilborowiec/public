@@ -17,4 +17,10 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\PonderingProgrammer.Map2d.ProcGen\PonderingProgrammer.Map2d.ProcGen.csproj" />
+      <ProjectReference Include="..\PonderingProgrammer.Map2d\PonderingProgrammer.Map2d.csproj" />
+      <ProjectReference Include="..\PonderingProgrammer.NtsToSvg\PonderingProgrammer.NtsToSvg.csproj" />
+    </ItemGroup>
+
 </Project>

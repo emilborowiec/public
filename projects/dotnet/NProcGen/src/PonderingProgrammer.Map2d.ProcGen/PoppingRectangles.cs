@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace PonderingProgrammer.Map2d.ProcGen
 {
@@ -7,9 +9,11 @@ namespace PonderingProgrammer.Map2d.ProcGen
     {
         public ManhattanFixedSquareMap2d<bool> Generate(PoppingRectanglesParams options)
         {
-            if (options.GetValidationErrors() is { } errors)
+            var context = new ValidationContext(options);
+            var validationResults = new List<ValidationResult>();
+            if (!Validator.TryValidateObject(options, context, validationResults))
             {
-                throw new ArgumentException(string.Join(";", errors));
+                throw new ArgumentException(string.Join(";", validationResults.Select(r => r.ErrorMessage)));
             }
             var rand = new Random();
             var factory = new AABoxFactory();
