@@ -1,7 +1,5 @@
 ﻿# ASP.NET Cheat Sheet
 
-## Fact list
-
 ### About ASP.NET platform
 
 - ASP.NET is a platform for building all kinds of interactive web applications and services.
@@ -43,11 +41,3 @@
 - You can pass weakly typed data to view through ViewData, ViewDataAttribute or ViewBag.
 
 ### About Razor Pages
-
-
-## Problems and solutions
-
-| Problem | Solution | Snippet |
-| ------- | -------- | ------- |
-| Set up convention based routing | Map default controller route on endpoints | `endpoints.MapDefaultControllerRoute();` |
-|  |  | `` |
