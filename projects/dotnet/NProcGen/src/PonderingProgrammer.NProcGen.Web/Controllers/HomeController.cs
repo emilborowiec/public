@@ -48,9 +48,9 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
                 return View("Index", new MapViewModel() { Options = options });
             }
             var map = _service.GenerateWithPoppingRectangles(options);
-            var svg = _renderer.RenderToSvg(map);
+            var svg = _renderer.RenderToSvg(map, MapViewModel.Scale);
 
-            var viewModel = new MapViewModel {Svg = svg.GetHtml()};
+            var viewModel = new MapViewModel {Options = options, Svg = svg.GetHtml()};
             return View("Index", viewModel);
         }
     }
