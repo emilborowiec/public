@@ -40,4 +40,13 @@
 - Specify a view model using the @model directive. Use the model with @Model
 - You can pass weakly typed data to view through ViewData, ViewDataAttribute or ViewBag.
 
+### Roles in ASP.NET MVC
+- Controller handles HTTP request through Action methods
+- Controller can return View in response
+- Controller initializes and passes ViewModel to View
+- ViewModel holds data presented by the View
+- View presents data and controls allowing user to send http requests
+- Routing middleware selects Controller for http request
+- Model Binder translates data from http request to action parameters or controller properties
+
 ### About Razor Pages
