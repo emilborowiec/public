@@ -11,11 +11,11 @@ namespace PonderingProgrammer.Map2d.ProcGen.Tests
             var superBox = new AABox(0, 0, 4, 4);
             var leftHalf = factory.CreateSubBox(superBox, Alignment.LEFT, 0.5, 1);
             Assert.Equal(0, leftHalf.MinX);
-            Assert.Equal(1, leftHalf.MaxX);
+            Assert.Equal(2, leftHalf.MaxXExclusive);
             Assert.Equal(2, leftHalf.Width);
             var rightHalf = factory.CreateSubBox(superBox, Alignment.RIGHT, 0.5, 1);
             Assert.Equal(2, rightHalf.MinX);
-            Assert.Equal(3, rightHalf.MaxX);
+            Assert.Equal(4, rightHalf.MaxXExclusive);
             Assert.Equal(2, rightHalf.Width);
         }
 
@@ -26,11 +26,11 @@ namespace PonderingProgrammer.Map2d.ProcGen.Tests
             var superBox = new AABox(0, 0, 3, 3);
             var leftHalf = factory.CreateSubBox(superBox, Alignment.LEFT, 0.5, 1);
             Assert.Equal(0, leftHalf.MinX);
-            Assert.Equal(0, leftHalf.MaxX);
+            Assert.Equal(1, leftHalf.MaxXExclusive);
             Assert.Equal(1, leftHalf.Width);
             var rightHalf = factory.CreateSubBox(superBox, Alignment.RIGHT, 0.5, 1);
             Assert.Equal(2, rightHalf.MinX);
-            Assert.Equal(2, rightHalf.MaxX);
+            Assert.Equal(3, rightHalf.MaxXExclusive);
             Assert.Equal(1, rightHalf.Width);
         }
 
@@ -41,11 +41,11 @@ namespace PonderingProgrammer.Map2d.ProcGen.Tests
             var superBox = new AABox(0, 0, 3, 3);
             var leftHalf = factory.CreateSubBox(superBox, Alignment.LEFT, 0.5, 1, true);
             Assert.Equal(0, leftHalf.MinX);
-            Assert.Equal(1, leftHalf.MaxX);
+            Assert.Equal(2, leftHalf.MaxXExclusive);
             Assert.Equal(2, leftHalf.Width);
             var rightHalf = factory.CreateSubBox(superBox, Alignment.RIGHT, 0.5, 1, true);
             Assert.Equal(1, rightHalf.MinX);
-            Assert.Equal(2, rightHalf.MaxX);
+            Assert.Equal(3, rightHalf.MaxXExclusive);
             Assert.Equal(2, rightHalf.Width);
         }
 

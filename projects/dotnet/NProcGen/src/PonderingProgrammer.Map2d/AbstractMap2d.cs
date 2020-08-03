@@ -12,7 +12,7 @@ namespace PonderingProgrammer.Map2d
 
         public abstract IEnumerable<Cell<T>> FindAdjacentCells(int x, int y);
         public abstract IEnumerable<Cell<T>> FindCells(Predicate<Cell<T>> predicate);
-        public abstract IEnumerable<Cell<T>> FindCells(Predicate<T> predicate);
+        public abstract IEnumerable<Cell<T>> FindCellsByValue(Predicate<T> predicate);
         public abstract AABox GetBounds();
         public abstract Cell<T> GetCell(int x, int y);
         public abstract IEnumerable<Cell<T>> GetCells();

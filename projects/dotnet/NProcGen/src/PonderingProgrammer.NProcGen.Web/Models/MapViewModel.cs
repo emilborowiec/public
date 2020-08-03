@@ -1,8 +1,10 @@
-﻿namespace PonderingProgrammer.NProcGen.Web.Models
+﻿using PonderingProgrammer.Map2d.ProcGen;
+
+namespace PonderingProgrammer.NProcGen.Web.Models
 {
     public class MapViewModel
     {
-        public string Title { get; set; } = "Map";
+        public PoppingRectanglesGenerationOptions Options { get; set; } = new PoppingRectanglesGenerationOptions();
         public string Svg { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PonderingProgrammer.Map2d.ProcGen;
 using PonderingProgrammer.Map2d.Svg;
 using PonderingProgrammer.NProcGen.Web.Models;
 using PonderingProgrammer.NtsToSvg;
@@ -26,7 +27,7 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(new MapViewModel());
         }
 
         public IActionResult Privacy()
@@ -40,13 +41,16 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
 
-        public IActionResult GenerateMap()
+        public IActionResult GenerateMap(PoppingRectanglesGenerationOptions options)
         {
-            var map = _service.GenerateSampleMap();
+            if (!ModelState.IsValid)
+            {
+                return View("Index", new MapViewModel() { Options = options });
+            }
+            var map = _service.GenerateWithPoppingRectangles(options);
             var svg = _renderer.RenderToSvg(map);
 
-            var viewModel = new MapViewModel();
-            viewModel.Svg = svg.GetHtml();
+            var viewModel = new MapViewModel {Svg = svg.GetHtml()};
             return View("Index", viewModel);
         }
     }

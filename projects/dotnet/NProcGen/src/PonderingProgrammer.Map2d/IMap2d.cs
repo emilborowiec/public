@@ -20,7 +20,7 @@ namespace PonderingProgrammer.Map2d
         AABox GetBounds();
 
         IEnumerable<Cell<T>> FindCells(Predicate<Cell<T>> predicate);
-        IEnumerable<Cell<T>> FindCells(Predicate<T> predicate);
+        IEnumerable<Cell<T>> FindCellsByValue(Predicate<T> predicate);
 
         IEnumerable<Cell<T>> FindAdjacentCells(int x, int y);
         IEnumerable<Cell<T>> FindAdjacentCells(Coord coord);

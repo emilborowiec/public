@@ -39,7 +39,7 @@ namespace PonderingProgrammer.Map2d
 
         public override IEnumerable<Cell<T>> FindCells(Predicate<Cell<T>> predicate) => _cells.FindAll(predicate);
 
-        public override IEnumerable<Cell<T>> FindCells(Predicate<T> predicate) => _cells.FindAll(cell => predicate.Invoke(cell.Value));
+        public override IEnumerable<Cell<T>> FindCellsByValue(Predicate<T> predicate) => _cells.FindAll(cell => predicate.Invoke(cell.Value));
 
         public IEnumerable<Cell<T>> FindCellsInBox(AABox box)
         {

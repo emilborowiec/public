@@ -10,8 +10,8 @@ namespace PonderingProgrammer.Map2dTests
         public void TestMax()
         {
             var bounds = new AABox(1, 2, 3, 4);
-            Assert.Equal(3, bounds.MaxX);
-            Assert.Equal(5, bounds.MaxY);
+            Assert.Equal(4, bounds.MaxXExclusive);
+            Assert.Equal(6, bounds.MaxYExclusive);
         }
 
         [Theory]

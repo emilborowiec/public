@@ -10,9 +10,8 @@ namespace PonderingProgrammer.Map2d.ProcGen
         {
             if (minSize < 1)
             {
-                throw new ArgumentException("size must be > 0");
+                throw new ArgumentException("min size must be > 0");
             }
-
             if (maxSize < minSize)
             {
                 throw new ArgumentException("maxSize must be >= minSize");
@@ -27,27 +26,16 @@ namespace PonderingProgrammer.Map2d.ProcGen
             {
                 throw new ArgumentException("size must be > 0");
             }
-
             if (maxSize < minSize)
             {
                 throw new ArgumentException("maxSize must be >= minSize");
             }
 
-            if (maxSize > box.Width)
-            {
-                throw new ArgumentException("maxSize greater than box width");
-            }
-
-            if (maxSize > box.Height)
-            {
-                throw new ArgumentException("maxSize greater than box height");
-            }
-
-            var width = _rand.RandRange(minSize, maxSize + 1);
-            var height = _rand.RandRange(minSize, maxSize + 1);
-
-            var minX = _rand.RandRange(box.MinX, box.MaxX - width + 1);
-            var minY = _rand.RandRange(box.MinY, box.MaxY - height + 1);
+            var width = Math.Min(_rand.RandRange(minSize, maxSize + 1), box.Width);
+            var height = Math.Min(_rand.RandRange(minSize, maxSize + 1), box.Height);
+            
+            var minX = _rand.RandRange(box.MinX, box.MaxXExclusive - width + 1);
+            var minY = _rand.RandRange(box.MinY, box.MaxYExclusive - height + 1);
 
             return new AABox(minX, minY, width, height);
         }
@@ -72,24 +60,24 @@ namespace PonderingProgrammer.Map2d.ProcGen
                     minY = superBox.MinY;
                     break;
                 case Alignment.TOP_RIGHT:
-                    minX = (superBox.MaxX - width + 1);
+                    minX = (superBox.MaxXExclusive - width);
                     minY = superBox.MinY;
                     break;
                 case Alignment.RIGHT:
-                    minX = superBox.MaxX - width + 1;
+                    minX = superBox.MaxXExclusive - width;
                     minY = (int)Math.Floor(superBox.CenterY - (h / 2));
                     break;
                 case Alignment.BOTTOM_RIGHT:
-                    minX = superBox.MaxX - width + 1;
-                    minY = superBox.MaxY - height + 1;
+                    minX = superBox.MaxXExclusive - width;
+                    minY = superBox.MaxYExclusive - height;
                     break;
                 case Alignment.BOTTOM:
                     minX = (int)Math.Floor(superBox.CenterX - (w / 2));
-                    minY = superBox.MaxY - height + 1;
+                    minY = superBox.MaxYExclusive - height;
                     break;
                 case Alignment.BOTTOM_LEFT:
                     minX = superBox.MinX;
-                    minY = superBox.MaxY - height + 1;
+                    minY = superBox.MaxYExclusive - height;
                     break;
                 case Alignment.LEFT:
                     minX = superBox.MinX;

@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Linq;
 
 namespace PonderingProgrammer.Map2d.ProcGen
 {
     public class PoppingRectangles
     {
-        public ManhattanFixedSquareMap2d<bool> Generate(PoppingRectanglesParams options)
+        public ManhattanFixedSquareMap2d<bool> Generate(PoppingRectanglesGenerationOptions options)
         {
             var context = new ValidationContext(options);
             var validationResults = new List<ValidationResult>();
@@ -25,24 +26,41 @@ namespace PonderingProgrammer.Map2d.ProcGen
 
             var firstRect = factory.CreateRandomWithinBox(firstRectSite, options.MinRectSize, options.MaxRectSize);
             map.SetInBounds(true, firstRect);
-            var corners = new List<Coord>(firstRect.Corners);
+            var seeds = FindFreeRangeSurfaceCells(map, options.MinRectSize);
             var rectCount = 1;
-            while (rectCount < options.RectCount)
+            while (rectCount < options.RectCount && seeds.Count > 0)
             {
-                var cornerIndex = rand.RandRange(0, corners.Count);
-                var coord = corners[cornerIndex];
-                corners.RemoveAt(cornerIndex);
+                var seedIndex = rand.RandRange(0, seeds.Count);
+                var coord = seeds[seedIndex].Coord;
+                seeds.RemoveAt(seedIndex);
                 var newRect = factory.CreateRandom(options.MinRectSize, options.MaxRectSize);
                 newRect = newRect.Translate(coord.X - newRect.Width / 2, coord.Y - newRect.Height / 2);
                 if (superBounds.Contains(newRect))
                 {
-                    corners.AddRange(newRect.Corners);
+                    seeds = FindFreeRangeSurfaceCells(map, options.MinRectSize);
                     map.SetInBounds(true, newRect);
                     rectCount++;
                 }
             }
 
             return map;
+        }
+
+        private List<Cell<bool>> FindFreeRangeSurfaceCells(IMap2d<bool> map, int range)
+        {
+            var minX = map.GetBounds().MinX;
+            var minY = map.GetBounds().MinY;
+            var maxX = map.GetBounds().MaxXExclusive;
+            var maxY = map.GetBounds().MaxYExclusive;
+            return FindFreeSurfaceCells(map).Where(c =>
+                c.Coord.X >= minX && c.Coord.Y >= minY && c.Coord.X < maxX && c.Coord.Y < maxY)
+                .ToList();
+        }
+
+        private IEnumerable<Cell<bool>> FindFreeSurfaceCells(IMap2d<bool> map)
+        {
+            return map.FindCellsByValue(v => v == true)
+                .Where(c => map.FindAdjacentCells(c.Coord).Any(ac => ac.Value == false));
         }
 
         private AABox ChooseFirstRectSite(AABoxFactory factory, AABox box, AspectType aspectType)
