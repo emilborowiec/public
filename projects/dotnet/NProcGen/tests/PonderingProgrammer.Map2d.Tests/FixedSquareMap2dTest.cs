@@ -1,5 +1,5 @@
-using PonderingProgrammer.Map2d;
 using System.Linq;
+using PonderingProgrammer.GridMath;
 using Xunit;
 
 namespace PonderingProgrammer.Map2dTests
@@ -42,10 +42,10 @@ namespace PonderingProgrammer.Map2dTests
         [Fact]
         public void GetCell()
         {
-            var coord = new Coord(1, 1);
+            var coord = new IntCoord(1, 1);
             var cell = _map.GetCell(coord);
             Assert.NotNull(cell);
-            Assert.Equal(coord, cell.Coord);
+            Assert.Equal(coord, cell.IntCoord);
             Assert.Null(_map.GetCell(10, 10));
         }
 
@@ -62,8 +62,8 @@ namespace PonderingProgrammer.Map2dTests
             var cells = _map.GetCellsRowMajor();
             var c1 = cells.ElementAt(0);
             var c2 = cells.ElementAt(1);
-            Assert.Equal(new Coord(0, 0), c1.Coord);
-            Assert.Equal(new Coord(1, 0), c2.Coord);
+            Assert.Equal(new IntCoord(0, 0), c1.IntCoord);
+            Assert.Equal(new IntCoord(1, 0), c2.IntCoord);
         }
 
         [Fact]

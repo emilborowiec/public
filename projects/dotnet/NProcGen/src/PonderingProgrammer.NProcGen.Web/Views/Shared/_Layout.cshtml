@@ -4,13 +4,21 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - NProcGen</title>
+    <link rel="stylesheet" href="~/css/layout.css"/>
 </head>
 <body>
 <header>
     <img src="/img/procgenlab.png" alt="procgenlab" />
 </header>
 <main role="main">
-    @RenderBody()
+    <div id="leftpane">
+        <ul>
+            <li><a asp-controller="Home" asp-action="PoppingRectangles">Popping Rectangles</a></li>
+            <li><a asp-controller="Home" asp-action="BuddingRectangles">Budding Rectangles</a></li>
+        </ul>
+    </div>
+    <div id="centerpane">@RenderBody()</div>
+    <div id="rightpane">@RenderSection("GenerationForm", false)</div>
 </main>
 
 <footer>

@@ -15,11 +15,11 @@ namespace PonderingProgrammer.Map2d.FeatureObjects
         {
             return new[]
             {
-                new Coordinate(cell.Coord.X * scale, cell.Coord.Y * scale),
-                new Coordinate((cell.Coord.X + 1) * scale, cell.Coord.Y * scale),
-                new Coordinate((cell.Coord.X + 1) * scale, (cell.Coord.Y + 1) * scale),
-                new Coordinate(cell.Coord.X * scale, (cell.Coord.Y + 1) * scale),
-                new Coordinate(cell.Coord.X * scale, cell.Coord.Y * scale),
+                new Coordinate(cell.IntCoord.X * scale, cell.IntCoord.Y * scale),
+                new Coordinate((cell.IntCoord.X + 1) * scale, cell.IntCoord.Y * scale),
+                new Coordinate((cell.IntCoord.X + 1) * scale, (cell.IntCoord.Y + 1) * scale),
+                new Coordinate(cell.IntCoord.X * scale, (cell.IntCoord.Y + 1) * scale),
+                new Coordinate(cell.IntCoord.X * scale, cell.IntCoord.Y * scale),
             };
         }
     }

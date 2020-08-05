@@ -1,6 +1,6 @@
 namespace PonderingProgrammer.Map2d.ProcGen
 {
-    public enum Alignment
+    public enum BoxAlignment
     {
         CENTER,
         TOP,

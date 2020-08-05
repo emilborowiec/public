@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PonderingProgrammer.Map2d.ProcGen;
+using PonderingProgrammer.Map2d.ProcGen.BuddingRectangles;
+using PonderingProgrammer.Map2d.ProcGen.PoppingRectangles;
 using PonderingProgrammer.Map2d.Svg;
 using PonderingProgrammer.NProcGen.Web.Models;
 using PonderingProgrammer.NtsToSvg;
@@ -35,23 +37,46 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
             return View();
         }
 
+        public IActionResult PoppingRectangles()
+        {
+            return View(new PoppingRectanglesViewModel() { Options = new PoppingRectanglesGenerationOptions() });
+        }
+        
+        public IActionResult BuddingRectangles()
+        {
+            return View(new BuddingRectanglesViewModel() { Options = new BuddingRectanglesGenerationOptions() });
+        }
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
 
-        public IActionResult GenerateMap(PoppingRectanglesGenerationOptions options)
+        public IActionResult GenerateWithPoppingRectangles(PoppingRectanglesGenerationOptions options)
         {
             if (!ModelState.IsValid)
             {
-                return View("Index", new MapViewModel() { Options = options });
+                return View("Index", new PoppingRectanglesViewModel() { Options = options });
             }
             var map = _service.GenerateWithPoppingRectangles(options);
             var svg = _renderer.RenderToSvg(map, MapViewModel.Scale);
 
-            var viewModel = new MapViewModel {Options = options, Svg = svg.GetHtml()};
-            return View("Index", viewModel);
+            var viewModel = new PoppingRectanglesViewModel() {Options = options, Svg = svg.GetHtml()};
+            return View("PoppingRectangles", viewModel);
+        }
+        
+        public IActionResult GenerateWithBuddingRectangles(BuddingRectanglesGenerationOptions options)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Index", new BuddingRectanglesViewModel() { Options = options });
+            }
+            var map = _service.GenerateWithBuddingRectangles(options);
+            var svg = _renderer.RenderToSvg(map, MapViewModel.Scale);
+
+            var viewModel = new BuddingRectanglesViewModel() {Options = options, Svg = svg.GetHtml()};
+            return View("BuddingRectangles", viewModel);
         }
     }
 }

@@ -1,28 +1,29 @@
 using System;
 using System.Collections.Generic;
+using PonderingProgrammer.GridMath;
 
 namespace PonderingProgrammer.Map2d
 {
     public abstract class FixedSquareMap2d<T> : AbstractMap2d<T>
     {
-        private readonly AABox _bounds;
+        private readonly GridMath.GridBoundingBox _bounds;
         private readonly List<Cell<T>> _cells;
 
         public FixedSquareMap2d(int width, int height)
         {
-            _bounds = new AABox(0, 0, width, height);
+            _bounds = GridBoundingBox.FromSize(0, 0, width, height);
 
             _cells = new List<Cell<T>>(width * height);
             for (var y = 0; y < height; y++)
             {
                 for (var x = 0; x < width; x++)
                 {
-                    _cells.Add(new Cell<T>(new Coord(x, y), default));
+                    _cells.Add(new Cell<T>(new IntCoord(x, y), default));
                 }
             }
         }
 
-        public override AABox GetBounds() => _bounds;
+        public override GridMath.GridBoundingBox GetBounds() => _bounds;
 
         public override Cell<T> GetCell(int x, int y) => HasCell(x, y) ? _cells[CoordToIndex(x, y)] : null;
 
@@ -41,12 +42,12 @@ namespace PonderingProgrammer.Map2d
 
         public override IEnumerable<Cell<T>> FindCellsByValue(Predicate<T> predicate) => _cells.FindAll(cell => predicate.Invoke(cell.Value));
 
-        public IEnumerable<Cell<T>> FindCellsInBox(AABox box)
+        public IEnumerable<Cell<T>> FindCellsInBox(GridMath.GridBoundingBox box)
         {
-            return FindCells((Cell<T> cell) => box.Contains(cell.Coord));
+            return FindCells((Cell<T> cell) => box.Contains(cell.IntCoord));
         }
 
-        public void SetInBounds(T value, AABox bounds)
+        public void SetInBounds(T value, GridMath.GridBoundingBox bounds)
         {
             foreach (var cell in FindCellsInBox(bounds))
             {

@@ -1,15 +1,14 @@
-using PonderingProgrammer.Map2d;
 using System;
 using Xunit;
 
-namespace PonderingProgrammer.Map2dTests
+namespace PonderingProgrammer.GridMath.Tests
 {
-    public class AABoxTest
+    public class GridBoundingBoxTest
     {
         [Fact]
         public void TestMax()
         {
-            var bounds = new AABox(1, 2, 3, 4);
+            var bounds = GridBoundingBox.FromSize(1, 2, 3, 4);
             Assert.Equal(4, bounds.MaxXExclusive);
             Assert.Equal(6, bounds.MaxYExclusive);
         }
@@ -21,7 +20,8 @@ namespace PonderingProgrammer.Map2dTests
         [InlineData(2, 0)]
         public void TestSizeAssertions(int width, int height)
         {
-            Assert.Throws<ArgumentException>(() => new AABox(0, 0, width, height));
+            Assert.Throws<ArgumentException>(() => GridBoundingBox.FromSize(0, 0, width, height));
         }
+        
     }
 }

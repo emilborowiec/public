@@ -1,11 +1,11 @@
-namespace PonderingProgrammer.Map2d
+namespace PonderingProgrammer.GridMath
 {
-    public struct Coord
+    public struct IntCoord
     {
         public readonly int X;
         public readonly int Y;
 
-        public Coord(int x, int y)
+        public IntCoord(int x, int y)
         {
             this.X = x;
             this.Y = y;

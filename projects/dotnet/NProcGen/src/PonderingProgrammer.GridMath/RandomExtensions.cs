@@ -1,6 +1,6 @@
 using System;
 
-namespace PonderingProgrammer.Map2d.ProcGen
+namespace PonderingProgrammer.GridMath
 {
     public static class RandomExtensions
     {
@@ -29,6 +29,11 @@ namespace PonderingProgrammer.Map2d.ProcGen
                 throw new ArgumentException("max must be greater than min");
             }
             return min + rand.NextDouble() * (max - min);
+        }
+
+        public static bool Chance(this Random rand, double chance)
+        {
+            return rand.NextDouble() < chance;
         }
     }
 }
