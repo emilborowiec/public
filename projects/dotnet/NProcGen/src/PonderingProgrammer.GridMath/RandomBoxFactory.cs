@@ -34,8 +34,8 @@ namespace PonderingProgrammer.GridMath
             var width = Math.Min(_rand.RandRange(minSize, maxSize + 1), bounds.Width);
             var height = Math.Min(_rand.RandRange(minSize, maxSize + 1), bounds.Height);
             
-            var minX = _rand.RandRange(bounds.MinX, bounds.MaxXExclusive - width + 1);
-            var minY = _rand.RandRange(bounds.MinY, bounds.MaxYExclusive - height + 1);
+            var minX = _rand.RandRange(bounds.MinX, bounds.MaxXExcl - width + 1);
+            var minY = _rand.RandRange(bounds.MinY, bounds.MaxYExcl - height + 1);
 
             return GridBoundingBox.FromSize(minX, minY, width, height);
         }

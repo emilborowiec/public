@@ -9,8 +9,8 @@ namespace PonderingProgrammer.GridMath.Tests
         public void TestMax()
         {
             var bounds = GridBoundingBox.FromSize(1, 2, 3, 4);
-            Assert.Equal(4, bounds.MaxXExclusive);
-            Assert.Equal(6, bounds.MaxYExclusive);
+            Assert.Equal(4, bounds.MaxXExcl);
+            Assert.Equal(6, bounds.MaxYExcl);
         }
 
         [Theory]

@@ -3,8 +3,7 @@
     public enum IntervalAnchor
     {
         Start,
-        CenterOrLower,
-        CenterOrHigher,
+        Center,
         End
     }
 }

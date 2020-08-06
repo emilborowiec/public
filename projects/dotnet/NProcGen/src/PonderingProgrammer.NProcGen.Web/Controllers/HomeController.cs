@@ -57,7 +57,7 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("Index", new PoppingRectanglesViewModel() { Options = options });
+                return View("PoppingRectangles", new PoppingRectanglesViewModel() { Options = options });
             }
             var map = _service.GenerateWithPoppingRectangles(options);
             var svg = _renderer.RenderToSvg(map, MapViewModel.Scale);
@@ -70,7 +70,7 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("Index", new BuddingRectanglesViewModel() { Options = options });
+                return View("BuddingRectangles", new BuddingRectanglesViewModel() { Options = options });
             }
             var map = _service.GenerateWithBuddingRectangles(options);
             var svg = _renderer.RenderToSvg(map, MapViewModel.Scale);

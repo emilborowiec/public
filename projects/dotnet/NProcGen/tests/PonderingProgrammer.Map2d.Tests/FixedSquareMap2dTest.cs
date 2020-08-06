@@ -74,8 +74,8 @@ namespace PonderingProgrammer.Map2dTests
             Assert.Equal(4, bounds.Height);
             Assert.Equal(0, bounds.MinX);
             Assert.Equal(0, bounds.MinY);
-            Assert.Equal(6, bounds.MaxXExclusive);
-            Assert.Equal(4, bounds.MaxYExclusive);
+            Assert.Equal(6, bounds.MaxXExcl);
+            Assert.Equal(4, bounds.MaxYExcl);
         }
     }
 }

@@ -2,32 +2,52 @@
 
 namespace PonderingProgrammer.GridMath
 {
+    /// <summary>
+    /// A GridInterval, mathematically speaking, is a closed, finite interval in an integer space of numbers.
+    /// It can be degenerate (having just one element) but it cannot be empty.
+    /// </summary>
+    /// <remarks>
+    /// The GridInterval is primarily represented as a pair of numbers <c>Min</c> and <c>Max</c>.
+    /// It also provides alternative representations which are commonly used in computations:
+    /// <list type="bullet">
+    /// <item>
+    /// <term><c>Length</c></term>
+    /// <description>Number of elements in the interval</description>
+    /// </item>
+    /// <item>
+    /// <term><c>MaxExcl</c></term>
+    /// <description>Open (exclusive) end of the interval</description>
+    /// </item>
+    /// </list>  
+    /// </remarks>
     public readonly struct GridInterval
     {
+        public static GridInterval FromExclusiveMax(int min, int maxExcl)
+        {
+            if (maxExcl <= min) throw new ArgumentException("MaxExcl is exclusive and must be greater than Min");
+            return new GridInterval(min, maxExcl - 1);
+        }
+
+        public static GridInterval FromLength(int min, int range)
+        {
+            if (range < 1) throw new ArgumentException("Interval cannot be empty - length must be greater than 0");
+            return FromExclusiveMax(min, min + range);
+        }
+
         public readonly int Min;
         public readonly int Max;
-        public readonly int MaxExcl;
-        public readonly int Range;
+        
+        public int MaxExcl => Max + 1;
+        public int Length => MaxExcl - Min;
+        public int Center => (Min + Max) / 2;
+        
 
-        public static GridInterval FromMinMax(int min, int maxExcl)
-        {
-            if (maxExcl <= min) throw new ArgumentException("MaxExcl is exclusive and must be greater than Min");
-            return new GridInterval(min, maxExcl);
-        }
 
-        public static GridInterval FromRange(int min, int range)
+        public GridInterval(int min, int max)
         {
-            if (range < 1) throw new ArgumentException("Range must be greater than 0");
-            return new GridInterval(min, min + range);
-        }
-
-        public GridInterval(int min, int maxExcl)
-        {
-            if (maxExcl <= min) throw new ArgumentException("MaxExcl is exclusive and must be greater than Min");
+            if (min > max) throw new ArgumentException("min cannot be greater than max");
             Min = min;
-            MaxExcl = maxExcl;
-            Max = MaxExcl - 1;
-            Range = maxExcl - min;
+            Max = max;
         }
 
         public bool Contains(int value)
@@ -51,70 +71,44 @@ namespace PonderingProgrammer.GridMath
             return Min == other.MaxExcl || MaxExcl == other.Min;
         }
 
-        public bool IsEven() => Range % 2 == 0;
-
-        public bool CanFindCenter() => !IsEven();
-
-        public bool CanSplitEven() => IsEven();
-
-        public int Center()
-        {
-            if (!CanFindCenter()) throw new InvalidOperationException("Cannot find center on even range interval");
-            return (Min + Max) / 2;
-        }
-
-        public int CenterOrLower()
-        {
-            return (Min + Max) / 2;
-        }
-
-        public int CenterOrHigher()
-        {
-            return (Min + MaxExcl) / 2;
-        }
-
-        public int HalfRangeOrLower()
-        {
-            return Range / 2;
-        }
-
-        public int HalfRangeOrHigher()
-        {
-            return (Range + 1) / 2;
-        }
+        public bool IsEven() => Length % 2 == 0;
 
         public GridInterval[] SplitEven()
         {
-            if (!CanSplitEven()) throw new InvalidOperationException("Cannot split even an interval with odd range");
-            var halfRange = Range / 2;
-            return new[] { new GridInterval(Min, Min + halfRange), new GridInterval(Min + halfRange, MaxExcl)};
+            if (!IsEven()) throw new InvalidOperationException("Cannot split even an interval with odd length");
+            var halfRange = Length / 2;
+            return new[] { FromExclusiveMax(Min, Min + halfRange), FromExclusiveMax(Min + halfRange, MaxExcl)};
         }
 
         public GridInterval Translate(int value)
         {
-            return new GridInterval(Min + value, MaxExcl + value);
+            return new GridInterval(Min + value, Max + value);
         }
 
         public GridInterval SetPosition(int position, IntervalAnchor anchor, int offset = 0)
         {
             return anchor switch
             {
-                IntervalAnchor.Start => GridInterval.FromRange(position + offset, Range),
-                IntervalAnchor.CenterOrLower => GridInterval.FromRange(position - (CenterOrLower() - Min) + offset, Range),
-                IntervalAnchor.CenterOrHigher => GridInterval.FromRange(position - (CenterOrHigher() - Min) + offset, Range),
-                IntervalAnchor.End => GridInterval.FromRange(position - (Max - Min) + offset, Range),
+                IntervalAnchor.Start => FromLength(position + offset, Length),
+                IntervalAnchor.Center => FromLength(position - (Center - Min) + offset, Length),
+                IntervalAnchor.End => FromLength(position - (Max - Min) + offset, Length),
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
 
         public GridInterval SetMin(int min)
         {
-            return new GridInterval(min, min + Range);
+            return FromLength(min, min + Length);
+        }
+
+        public GridInterval SetMax(int max)
+        {
+            return new GridInterval(max - Length + 1, max);
         }
 
         public GridInterval SetMaxExcl(int maxExcl)
         {
-            return new GridInterval(maxExcl - Range, maxExcl);
+            return new GridInterval(maxExcl - Length, maxExcl - 1);
         }
 
         public GridInterval Relate(GridInterval second, Relation relation, int offset = 0)
@@ -122,17 +116,16 @@ namespace PonderingProgrammer.GridMath
             return relation.Second switch
             {
                 IntervalAnchor.Start => SetPosition(second.Min, relation.First, offset),
-                IntervalAnchor.CenterOrLower => SetPosition(second.CenterOrLower(), relation.First, offset),
-                IntervalAnchor.CenterOrHigher => SetPosition(second.CenterOrHigher(), relation.First, offset),
+                IntervalAnchor.Center => SetPosition(second.Center, relation.First, offset),
                 IntervalAnchor.End => SetPosition(second.Max, relation.First, offset),
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
 
-        public GridInterval Fraction(double fraction)
+        public GridInterval Multiply(double fraction)
         {
-            var fractionRange = Integerizer.ToInt(Range * fraction, Rounding.ToCeiling);
-            return GridInterval.FromRange(Min, fractionRange);
+            var fractionLength = (int)(Length * fraction);
+            return FromLength(Min, fractionLength);
         }
     }
 }

@@ -3,9 +3,11 @@ using System;
 namespace PonderingProgrammer.GridMath
 {
     /// <summary>
-    /// Axis-Aligned Box.
-    /// Min/Max values follow [min,max) convention. Argument: www.cs.utexas.edu/~EWD/ewd08xx/EWD831.PDF 
+    /// A GridBoundingBox is an Axis-Aligned Bounding Box on a space of integer numbers.
     /// </summary>
+    /// <remarks>
+    /// It is modelled by a pair of <c>GridInteravl</c>s, one for X and one for Y axis.
+    /// </remarks>
     public readonly struct GridBoundingBox
     {
         public readonly GridInterval XInterval;
@@ -17,17 +19,25 @@ namespace PonderingProgrammer.GridMath
 
         public static GridBoundingBox FromMinMax(int minX, int minY, int maxX, int maxY)
         {
-            if (maxX <= minX || maxY <= minY) throw new ArgumentException($"Max is exclusive and must be greater than Min");
+            if (minX > maxX || minY > maxY) throw new ArgumentException($"min cannot be greater than max");
             var xInterval = new GridInterval(minX, maxX);
             var yInterval = new GridInterval(minY, maxY);
+            return new GridBoundingBox(xInterval, yInterval);             
+        }
+
+        public static GridBoundingBox FromMinMaxExcl(int minX, int minY, int maxXExcl, int maxYExcl)
+        {
+            if (maxXExcl <= minX || maxYExcl <= minY) throw new ArgumentException($"Max is exclusive and must be greater than Min");
+            var xInterval = GridInterval.FromExclusiveMax(minX, maxXExcl);
+            var yInterval = GridInterval.FromExclusiveMax(minY, maxYExcl);
             return new GridBoundingBox(xInterval, yInterval);             
         }
 
         public static GridBoundingBox FromSize(int minX, int minY, int width, int height)
         {
             if (width < 1 || height < 1) throw new ArgumentException($"Size must be greater than 0");
-            var xInterval = new GridInterval(minX, minX + width);
-            var yInterval = new GridInterval(minY, minY + height);
+            var xInterval = GridInterval.FromExclusiveMax(minX, minX + width);
+            var yInterval = GridInterval.FromExclusiveMax(minY, minY + height);
             return new GridBoundingBox(xInterval, yInterval);
         }
         
@@ -43,10 +53,12 @@ namespace PonderingProgrammer.GridMath
 
         public int MinX => XInterval.Min;
         public int MinY => YInterval.Min;
-        public int Width => XInterval.Range;
-        public int Height => YInterval.Range;
-        public int MaxXExclusive => XInterval.MaxExcl;
-        public int MaxYExclusive => YInterval.MaxExcl;
+        public int MaxX => XInterval.Max;
+        public int MaxY => YInterval.Max;
+        public int Width => XInterval.Length;
+        public int Height => YInterval.Length;
+        public int MaxXExcl => XInterval.MaxExcl;
+        public int MaxYExcl => YInterval.MaxExcl;
 
         public bool Contains(int x, int y)
         {
@@ -92,7 +104,7 @@ namespace PonderingProgrammer.GridMath
 
         public GridBoundingBox SetMaxX(int value)
         {
-            return new GridBoundingBox(XInterval.SetMaxExcl(value), YInterval);
+            return new GridBoundingBox(XInterval.SetMax(value), YInterval);
         }
 
         public GridBoundingBox SetMinY(int value)
@@ -102,7 +114,7 @@ namespace PonderingProgrammer.GridMath
 
         public GridBoundingBox SetMaxY(int value)
         {
-            return new GridBoundingBox(XInterval, YInterval.SetMaxExcl(value));
+            return new GridBoundingBox(XInterval, YInterval.SetMax(value));
         }
 
         public GridBoundingBox Relate(GridBoundingBox other, Relation xRelation, Relation yRelation, int xOffset = 0,

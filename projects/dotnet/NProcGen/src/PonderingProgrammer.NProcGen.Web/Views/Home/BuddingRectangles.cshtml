@@ -17,15 +17,25 @@
 
 @section GenerationForm {
     <form asp-action="GenerateWithBuddingRectangles">
-        <label asp-for="Options.Width">Width</label>
-        <input asp-for="Options.Width"/>
-        <label asp-for="Options.Height">Height</label>
-        <input asp-for="Options.Height"/>
-        <label asp-for="Options.MinRectSize">Rectangle minimum size</label>
-        <input asp-for="Options.MinRectSize"/>
-        <label asp-for="Options.MaxRectSize">Rectangle maximum size</label>
-        <input asp-for="Options.MaxRectSize"/>
-        <div asp-validation-summary="All"></div>
-        <button type="submit">Generate</button>
+        <div>
+            <label asp-for="Options.Width">Width</label>
+            <input asp-for="Options.Width"/>
+        </div>
+        <div>
+            <label asp-for="Options.Height">Height</label>
+            <input asp-for="Options.Height"/>
+        </div>
+        <div>
+            <label asp-for="Options.MinRectSize">Rectangle minimum size</label>
+            <input asp-for="Options.MinRectSize"/>
+        </div>
+        <div>
+            <label asp-for="Options.MaxRectSize">Rectangle maximum size</label>
+            <input asp-for="Options.MaxRectSize"/>
+        </div>
+        <div>
+            <div asp-validation-summary="All"></div>
+        </div>
+        <button type="submit">Generate</button>    
     </form>
 }

@@ -1,5 +1,8 @@
 namespace PonderingProgrammer.GridMath
 {
+    /// <summary>
+    /// An IntCoord is a coordinate on a 2-dimensional, integer space.
+    /// </summary>
     public struct IntCoord
     {
         public readonly int X;

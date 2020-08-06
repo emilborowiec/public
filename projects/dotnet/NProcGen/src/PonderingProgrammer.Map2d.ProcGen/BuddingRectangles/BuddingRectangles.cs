@@ -13,22 +13,29 @@ namespace PonderingProgrammer.Map2d.ProcGen.BuddingRectangles
             var map = GenerateFixedMap(options.Width, options.Height);
             
             var firstRoom = _randomBoxFactory.RandomSizeBox(options.MaxRectSize, options.MaxRectSize);
-            firstRoom.Relate(map.GetBounds(), Relation.CenterOrLowerToCenterOrLower(),
-                Relation.CenterOrLowerToCenterOrLower());
+            firstRoom.Relate(map.GetBounds(), Relation.CenterToCenter(),
+                Relation.CenterToCenter());
             map.SetInBounds(true, firstRoom);
 
-            var aspectType = Aspect.RatioToType(options.Width / options.Height);
-            var preferredAxis = Axis.Horizontal;
-            if (options.Width / options.Height < 1) preferredAxis = Axis.Vertical;
+            var lastRoom = firstRoom;
 
-            var axis = getAxis(preferredAxis);
-
-            var room = _randomBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);
-            if (preferredAxis == Axis.Horizontal)
+            for (int i = 0; i < 10; i++)
             {
-                room.Relate(firstRoom, Relation.StartToEnd(), Relation.StartToStart());
-                map.SetInBounds(true, room);
+                var aspectType = Aspect.RatioToType(options.Width / options.Height);
+                var preferredAxis = Axis.Horizontal;
+                if (options.Width / options.Height < 1) preferredAxis = Axis.Vertical;
+
+                var axis = getAxis(preferredAxis);
+
+                var room = _randomBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);
+                if (preferredAxis == Axis.Horizontal)
+                {
+                    room.Relate(lastRoom, Relation.StartToEnd(), Relation.StartToStart());
+                    map.SetInBounds(true, room);
+                    lastRoom = room;
+                }
             }
+
 
             return map;
         }
