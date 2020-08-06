@@ -7,6 +7,11 @@ namespace PonderingProgrammer.GridMath
     /// It can be degenerate (having just one element) but it cannot be empty.
     /// </summary>
     /// <remarks>
+    /// Values in grid space are discreet integers and are modelled simply as int.
+    /// Mapping from real space to grid space is chosen such that N on grid corresponds to R[N,N+1).
+    /// Cast to int, which truncates floating part, effectively provides mapping from R to grid.
+    /// </remarks>
+    /// <remarks>
     /// The GridInterval is primarily represented as a pair of numbers <c>Min</c> and <c>Max</c>.
     /// It also provides alternative representations which are commonly used in computations:
     /// <list type="bullet">
