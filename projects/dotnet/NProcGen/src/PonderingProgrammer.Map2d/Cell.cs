@@ -4,12 +4,12 @@ namespace PonderingProgrammer.Map2d
 {
     public class Cell<T>
     {
-        public IntCoord IntCoord { get; }
+        public GridCoordinate GridCoord { get; }
         public T Value { get; set; }
 
-        public Cell(IntCoord intCoord, T value)
+        public Cell(GridCoordinate gridCoord, T value)
         {
-            IntCoord = intCoord;
+            GridCoord = gridCoord;
             Value = value;
         }
     }

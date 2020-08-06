@@ -6,10 +6,10 @@ namespace PonderingProgrammer.Map2d
 {
     public abstract class AbstractMap2d<T> : IMap2d<T>
     {
-        public IEnumerable<Cell<T>> FindAdjacentCells(IntCoord intCoord) => FindAdjacentCells(intCoord.X, intCoord.Y);
-        public Cell<T> GetCell(IntCoord intCoord) => GetCell(intCoord.X, intCoord.Y);
-        public T GetValueOrDefault(IntCoord intCoord) => GetValueOrDefault(intCoord.X, intCoord.Y);
-        public bool HasCell(IntCoord intCoord) => HasCell(intCoord.X, intCoord.Y);
+        public IEnumerable<Cell<T>> FindAdjacentCells(GridCoordinate gridCoord) => FindAdjacentCells(gridCoord.X, gridCoord.Y);
+        public Cell<T> GetCell(GridCoordinate gridCoord) => GetCell(gridCoord.X, gridCoord.Y);
+        public T GetValueOrDefault(GridCoordinate gridCoord) => GetValueOrDefault(gridCoord.X, gridCoord.Y);
+        public bool HasCell(GridCoordinate gridCoord) => HasCell(gridCoord.X, gridCoord.Y);
 
         public abstract IEnumerable<Cell<T>> FindAdjacentCells(int x, int y);
         public abstract IEnumerable<Cell<T>> FindCells(Predicate<Cell<T>> predicate);

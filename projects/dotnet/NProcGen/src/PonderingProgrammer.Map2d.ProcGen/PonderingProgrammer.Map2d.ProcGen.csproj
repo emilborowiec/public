@@ -8,4 +8,8 @@
     <ProjectReference Include="..\PonderingProgrammer.Map2d\PonderingProgrammer.Map2d.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="PonderingProgrammer.GridMath" Version="0.1.0" />
+  </ItemGroup>
+
 </Project>

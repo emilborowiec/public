@@ -29,7 +29,7 @@ namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
             while (seeds.Count > 0)
             {
                 var seedIndex = rand.RandRange(0, seeds.Count);
-                var coord = seeds[seedIndex].IntCoord;
+                var coord = seeds[seedIndex].GridCoord;
                 seeds.RemoveAt(seedIndex);
                 var newRect = randBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);
                 newRect = newRect.SetPosition(coord.X, coord.Y, IntervalAnchor.Center, IntervalAnchor.Center);
@@ -52,14 +52,14 @@ namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
             var maxX = map.GetBounds().MaxXExcl - range;
             var maxY = map.GetBounds().MaxYExcl - range;
             return FindFreeSurfaceCells(map).Where(c =>
-                c.IntCoord.X >= minX && c.IntCoord.Y >= minY && c.IntCoord.X < maxX && c.IntCoord.Y < maxY)
+                c.GridCoord.X >= minX && c.GridCoord.Y >= minY && c.GridCoord.X < maxX && c.GridCoord.Y < maxY)
                 .ToList();
         }
 
         private IEnumerable<Cell<bool>> FindFreeSurfaceCells(IMap2d<bool> map)
         {
             return map.FindCellsByValue(v => v)
-                .Where(c => map.FindAdjacentCells(c.IntCoord).Any(ac => ac.Value == false));
+                .Where(c => map.FindAdjacentCells(c.GridCoord).Any(ac => ac.Value == false));
         }
         
         private ManhattanFixedSquareMap2d<bool> GenerateFixedMap(int width, int height)

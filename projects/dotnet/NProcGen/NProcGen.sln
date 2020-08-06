@@ -32,10 +32,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.NProcGe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.Map2d.Svg", "src\PonderingProgrammer.Map2d.Svg\PonderingProgrammer.Map2d.Svg.csproj", "{A7EC9741-683E-4A04-8AF6-AE9ED6A80147}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.GridMath", "src\PonderingProgrammer.GridMath\PonderingProgrammer.GridMath.csproj", "{298AB8C0-93C6-410C-9D73-9CEE9A39589B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.GridMath.Tests", "tests\PonderingProgrammer.GridMath.Tests\PonderingProgrammer.GridMath.Tests.csproj", "{7C2180E8-A421-43BB-A1D3-99FD5BD78538}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,14 +74,6 @@ Global
 		{A7EC9741-683E-4A04-8AF6-AE9ED6A80147}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7EC9741-683E-4A04-8AF6-AE9ED6A80147}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7EC9741-683E-4A04-8AF6-AE9ED6A80147}.Release|Any CPU.Build.0 = Release|Any CPU
-		{298AB8C0-93C6-410C-9D73-9CEE9A39589B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{298AB8C0-93C6-410C-9D73-9CEE9A39589B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{298AB8C0-93C6-410C-9D73-9CEE9A39589B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{298AB8C0-93C6-410C-9D73-9CEE9A39589B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C2180E8-A421-43BB-A1D3-99FD5BD78538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C2180E8-A421-43BB-A1D3-99FD5BD78538}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C2180E8-A421-43BB-A1D3-99FD5BD78538}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C2180E8-A421-43BB-A1D3-99FD5BD78538}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,8 +88,6 @@ Global
 		{7E589467-1C1E-4AAA-B262-49DFE424F324} = {86960D7D-509D-4C69-9057-95362FB75A65}
 		{352DD18C-1F8F-45E3-8191-8A82B4DD5D0E} = {A6CA77C9-F043-4D2A-AEAD-6F447BC5215F}
 		{A7EC9741-683E-4A04-8AF6-AE9ED6A80147} = {A6CA77C9-F043-4D2A-AEAD-6F447BC5215F}
-		{298AB8C0-93C6-410C-9D73-9CEE9A39589B} = {A6CA77C9-F043-4D2A-AEAD-6F447BC5215F}
-		{7C2180E8-A421-43BB-A1D3-99FD5BD78538} = {CA5ACE5F-0BFA-435F-89DA-D399EA2928C8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {41401C5D-2346-4DB1-9FE4-B52085142104}

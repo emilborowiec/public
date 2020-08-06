@@ -24,7 +24,7 @@ namespace PonderingProgrammer.Map2d
             foreach (var cell in GetCells())
             {
                 graph.Nodes.Add(cell);
-                foreach (var adjacent in FindAdjacentCells(cell.IntCoord))
+                foreach (var adjacent in FindAdjacentCells(cell.GridCoord))
                 {
                     if (cell == adjacent) continue;
                     graph.Edges.Add(new CellGraphEdge<T>(cell, adjacent));

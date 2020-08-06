@@ -18,7 +18,7 @@ namespace PonderingProgrammer.Map2d
             {
                 for (var x = 0; x < width; x++)
                 {
-                    _cells.Add(new Cell<T>(new IntCoord(x, y), default));
+                    _cells.Add(new Cell<T>(new GridCoordinate(x, y), default));
                 }
             }
         }
@@ -44,7 +44,7 @@ namespace PonderingProgrammer.Map2d
 
         public IEnumerable<Cell<T>> FindCellsInBox(GridMath.GridBoundingBox box)
         {
-            return FindCells((Cell<T> cell) => box.Contains(cell.IntCoord));
+            return FindCells((Cell<T> cell) => box.Contains(cell.GridCoord));
         }
 
         public void SetInBounds(T value, GridMath.GridBoundingBox bounds)

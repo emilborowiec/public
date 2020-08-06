@@ -7,13 +7,13 @@ namespace PonderingProgrammer.Map2d
     public interface IMap2d<T>
     {
         bool HasCell(int x, int y);
-        bool HasCell(IntCoord intCoord);
+        bool HasCell(GridCoordinate gridCoord);
 
         Cell<T> GetCell(int x, int y);
-        Cell<T> GetCell(IntCoord intCoord);
+        Cell<T> GetCell(GridCoordinate gridCoord);
 
         T GetValueOrDefault(int x, int y);
-        T GetValueOrDefault(IntCoord intCoord);
+        T GetValueOrDefault(GridCoordinate gridCoord);
 
         IEnumerable<Cell<T>> GetCells();
         IEnumerable<Cell<T>> GetCellsRowMajor();
@@ -24,7 +24,7 @@ namespace PonderingProgrammer.Map2d
         IEnumerable<Cell<T>> FindCellsByValue(Predicate<T> predicate);
 
         IEnumerable<Cell<T>> FindAdjacentCells(int x, int y);
-        IEnumerable<Cell<T>> FindAdjacentCells(IntCoord intCoord);
+        IEnumerable<Cell<T>> FindAdjacentCells(GridCoordinate gridCoord);
 
         CellGraph<T> ToCellGraph();
     }
