@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using PonderingProgrammer.GridMath;
+using RandomBoxFactory = PonderingProgrammer.Map2d.ProcGen.Randoms.RandomBoxFactory;
 
 namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
 {
@@ -28,7 +29,7 @@ namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
             var seeds = FindFreeRangeSurfaceCells(map, options.MinRectSize);
             while (seeds.Count > 0)
             {
-                var seedIndex = rand.RandRange(0, seeds.Count);
+                var seedIndex = rand.Next(0, seeds.Count);
                 var coord = seeds[seedIndex].GridCoord;
                 seeds.RemoveAt(seedIndex);
                 var newRect = randBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);

@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using PonderingProgrammer.GridMath;
+using PonderingProgrammer.Map2d.ProcGen.Randoms;
+using RandomBoxFactory = PonderingProgrammer.Map2d.ProcGen.Randoms.RandomBoxFactory;
 
 namespace PonderingProgrammer.Map2d.ProcGen.BuddingRectangles
 {
@@ -11,32 +15,42 @@ namespace PonderingProgrammer.Map2d.ProcGen.BuddingRectangles
         public IMap2d<bool> Generate(BuddingRectanglesGenerationOptions options)
         {
             var map = GenerateFixedMap(options.Width, options.Height);
-            
-            var firstRoom = _randomBoxFactory.RandomSizeBox(options.MaxRectSize, options.MaxRectSize);
-            firstRoom.Relate(map.GetBounds(), Relation.CenterToCenter(),
+            var rooms = new List<Room>();
+            var roomsToVisit = new List<Room>();
+
+            var box = _randomBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);
+            box = box.Relate(map.GetBounds(), Relation.CenterToCenter(),
                 Relation.CenterToCenter());
-            map.SetInBounds(true, firstRoom);
+            var firstRoom = new Room { Box = box };
+            map.SetInBounds(true, firstRoom.Box);
+            rooms.Add(firstRoom);
+            roomsToVisit.Add(firstRoom);
 
-            var lastRoom = firstRoom;
-
-            for (int i = 0; i < 10; i++)
+            while (roomsToVisit.Count > 0)
             {
-                var aspectType = Aspect.RatioToType(options.Width / options.Height);
-                var preferredAxis = Axis.Horizontal;
-                if (options.Width / options.Height < 1) preferredAxis = Axis.Vertical;
-
-                var axis = getAxis(preferredAxis);
-
-                var room = _randomBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);
-                if (preferredAxis == Axis.Horizontal)
+                var room = roomsToVisit.First();
+                box = _randomBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);
+                foreach (var direction in _rand.ShuffleEnum<Grid4Direction>())
                 {
-                    room.Relate(lastRoom, Relation.StartToEnd(), Relation.StartToStart());
-                    map.SetInBounds(true, room);
-                    lastRoom = room;
+                    if (!room.WallsToRooms.ContainsKey(direction))
+                    {
+                        box = box.PlaceBeside(room.Box, direction);
+                        if (map.FindCellsInBox(box).Any(c => c.Value) || !map.GetBounds().Contains(box))
+                        {
+                            continue;
+                        }
+
+                        // no collision and within map bounds
+                        var newRoom = new Room {Box = box};
+                        room.WallsToRooms[direction] = newRoom;
+                        map.SetInBounds(true, box);
+                        rooms.Add(newRoom);
+                        roomsToVisit.Add(newRoom);
+                    }
                 }
+
+                roomsToVisit.Remove(room);
             }
-
-
             return map;
         }
 
