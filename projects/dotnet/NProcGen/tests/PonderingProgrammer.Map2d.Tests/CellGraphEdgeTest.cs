@@ -1,16 +1,15 @@
 using PonderingProgrammer.GridMath;
 using Xunit;
-using PonderingProgrammer.Map2d;
 
-namespace PonderingProgrammer.Map2dTests
+namespace PonderingProgrammer.Map2d.Tests
 {
     public class CellGraphEdgeTest
     {
         [Fact]
         public void TestEquals()
         {
-            var c1 = new Cell<int>(new GridCoordinate(1, 1), 1);
-            var c2 = new Cell<int>(new GridCoordinate(2, 2), 2);
+            var c1 = new Cell<int>(new GridCoordinatePair(1, 1), 1);
+            var c2 = new Cell<int>(new GridCoordinatePair(2, 2), 2);
 
             var c1c2 = new CellGraphEdge<int>(c1, c2);
             var c1c2Clone = new CellGraphEdge<int>(c1, c2);

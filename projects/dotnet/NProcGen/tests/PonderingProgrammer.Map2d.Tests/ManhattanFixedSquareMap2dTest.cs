@@ -1,8 +1,7 @@
-﻿using PonderingProgrammer.Map2d;
-using System.Linq;
+﻿using System.Linq;
 using Xunit;
 
-namespace PonderingProgrammer.Map2dTests
+namespace PonderingProgrammer.Map2d.Tests
 {
     public class ManhattanFixedSquareMap2dTest
     {

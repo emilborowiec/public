@@ -1,7 +1,6 @@
-﻿using PonderingProgrammer.Map2d;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace PonderingProgrammer.Map2dTests
+namespace PonderingProgrammer.Map2d.Tests
 {
     class ConcreteFixedSquareMap2d : FixedSquareMap2d<bool>
     {

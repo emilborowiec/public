@@ -18,7 +18,7 @@ namespace PonderingProgrammer.Map2d
             {
                 for (var x = 0; x < width; x++)
                 {
-                    _cells.Add(new Cell<T>(new GridCoordinate(x, y), default));
+                    _cells.Add(new Cell<T>(new GridCoordinatePair(x, y), default));
                 }
             }
         }

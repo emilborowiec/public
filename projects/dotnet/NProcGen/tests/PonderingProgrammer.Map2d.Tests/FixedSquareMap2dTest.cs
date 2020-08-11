@@ -2,7 +2,7 @@ using System.Linq;
 using PonderingProgrammer.GridMath;
 using Xunit;
 
-namespace PonderingProgrammer.Map2dTests
+namespace PonderingProgrammer.Map2d.Tests
 {
     public class FixedSquareMap2dTest
     {
@@ -42,7 +42,7 @@ namespace PonderingProgrammer.Map2dTests
         [Fact]
         public void GetCell()
         {
-            var coord = new GridCoordinate(1, 1);
+            var coord = new GridCoordinatePair(1, 1);
             var cell = _map.GetCell(coord);
             Assert.NotNull(cell);
             Assert.Equal(coord, cell.GridCoord);
@@ -62,8 +62,8 @@ namespace PonderingProgrammer.Map2dTests
             var cells = _map.GetCellsRowMajor();
             var c1 = cells.ElementAt(0);
             var c2 = cells.ElementAt(1);
-            Assert.Equal(new GridCoordinate(0, 0), c1.GridCoord);
-            Assert.Equal(new GridCoordinate(1, 0), c2.GridCoord);
+            Assert.Equal(new GridCoordinatePair(0, 0), c1.GridCoord);
+            Assert.Equal(new GridCoordinatePair(1, 0), c2.GridCoord);
         }
 
         [Fact]
