@@ -47,6 +47,11 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
             return View(new BuddingRectanglesViewModel() { Options = new BuddingRectanglesGenerationOptions() });
         }
         
+        public IActionResult PackedRectangles()
+        {
+            return View(new PackedRectanglesViewModel() { Options = new PackedRectanglesGenerationOptions() });
+        }
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -77,6 +82,19 @@ namespace PonderingProgrammer.NProcGen.Web.Controllers
 
             var viewModel = new BuddingRectanglesViewModel() {Options = options, Svg = svg.GetHtml()};
             return View("BuddingRectangles", viewModel);
+        }
+        
+        public IActionResult GenerateWithPackedRectangles(PackedRectanglesGenerationOptions options)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("PackedRectangles", new PackedRectanglesViewModel() { Options = options });
+            }
+            var map = _service.GenerateWithPackedRectangles(options);
+            var svg = _renderer.RenderToSvg(map, MapViewModel.Scale);
+
+            var viewModel = new PackedRectanglesViewModel() {Options = options, Svg = svg.GetHtml()};
+            return View("PackedRectangles", viewModel);
         }
     }
 }

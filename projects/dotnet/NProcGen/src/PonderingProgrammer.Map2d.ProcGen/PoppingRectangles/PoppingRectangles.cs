@@ -9,7 +9,7 @@ namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
 {
     public class PoppingRectangles
     {
-        public ManhattanFixedSquareMap2d<bool> Generate(PoppingRectanglesGenerationOptions options)
+        public ManhattanFixedSquareGridMap<bool> Generate(PoppingRectanglesGenerationOptions options)
         {
             var context = new ValidationContext(options);
             var validationResults = new List<ValidationResult>();
@@ -30,7 +30,7 @@ namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
             while (seeds.Count > 0)
             {
                 var seedIndex = rand.Next(0, seeds.Count);
-                var coord = seeds[seedIndex].GridCoord;
+                var coord = seeds[seedIndex].Coordinates;
                 seeds.RemoveAt(seedIndex);
                 var newRect = randBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);
                 newRect = newRect.SetPosition(coord.X, coord.Y, IntervalAnchor.Center, IntervalAnchor.Center);
@@ -46,26 +46,26 @@ namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
             return map;
         }
 
-        private List<Cell<bool>> FindFreeRangeSurfaceCells(IMap2d<bool> map, int range)
+        private List<GridMapField> FindFreeRangeSurfaceCells(IGridMap map, int range)
         {
             var minX = map.GetBounds().MinX + range;
             var minY = map.GetBounds().MinY + range;
             var maxX = map.GetBounds().MaxXExcl - range;
             var maxY = map.GetBounds().MaxYExcl - range;
             return FindFreeSurfaceCells(map).Where(c =>
-                c.GridCoord.X >= minX && c.GridCoord.Y >= minY && c.GridCoord.X < maxX && c.GridCoord.Y < maxY)
+                c.Coordinates.X >= minX && c.Coordinates.Y >= minY && c.Coordinates.X < maxX && c.Coordinates.Y < maxY)
                 .ToList();
         }
 
-        private IEnumerable<Cell<bool>> FindFreeSurfaceCells(IMap2d<bool> map)
+        private IEnumerable<GridMapField> FindFreeSurfaceCells(IGridMap map)
         {
             return map.FindCellsByValue(v => v)
-                .Where(c => map.FindAdjacentCells(c.GridCoord).Any(ac => ac.Value == false));
+                .Where(c => map.FindAdjacentFields(c.Coordinates).Any(ac => ac.Value == false));
         }
         
-        private ManhattanFixedSquareMap2d<bool> GenerateFixedMap(int width, int height)
+        private ManhattanFixedSquareGridMap<bool> GenerateFixedMap(int width, int height)
         {
-            return new ManhattanFixedSquareMap2d<bool>(width, height);
+            return new ManhattanFixedSquareGridMap<bool>(width, height);
         }
     }
 }

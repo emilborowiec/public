@@ -12,7 +12,7 @@ namespace PonderingProgrammer.Map2d.ProcGen.BuddingRectangles
         private RandomBoxFactory _randomBoxFactory = new RandomBoxFactory();
         private Random _rand = new Random();
         
-        public IMap2d<bool> Generate(BuddingRectanglesGenerationOptions options)
+        public IGridMap Generate(BuddingRectanglesGenerationOptions options)
         {
             var map = GenerateFixedMap(options.Width, options.Height);
             var rooms = new List<Room>();
@@ -60,9 +60,9 @@ namespace PonderingProgrammer.Map2d.ProcGen.BuddingRectangles
             return _rand.Chance(0.25) ? notPreferred : preferredAxis;
         }
 
-        private ManhattanFixedSquareMap2d<bool> GenerateFixedMap(int width, int height)
+        private ManhattanFixedSquareGridMap<bool> GenerateFixedMap(int width, int height)
         {
-            return new ManhattanFixedSquareMap2d<bool>(width, height);
+            return new ManhattanFixedSquareGridMap<bool>(width, height);
         }
     }
     

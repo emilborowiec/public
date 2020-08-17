@@ -9,15 +9,21 @@ namespace PonderingProgrammer.NProcGen.Web.Models
     {
         private PoppingRectangles _poppingRectangles = new PoppingRectangles();
         private BuddingRectangles _buddingRectangles = new BuddingRectangles();
+        private PackedRectangles _packedRectangles = new PackedRectangles();
 
-        public IMap2d<bool> GenerateWithPoppingRectangles(PoppingRectanglesGenerationOptions options)
+        public IGridMap GenerateWithPoppingRectangles(PoppingRectanglesGenerationOptions options)
         {
             return _poppingRectangles.Generate(options);
         }
 
-        public IMap2d<bool> GenerateWithBuddingRectangles(BuddingRectanglesGenerationOptions options)
+        public IGridMap GenerateWithBuddingRectangles(BuddingRectanglesGenerationOptions options)
         {
             return _buddingRectangles.Generate(options);
+        }
+
+        public IGridMap GenerateWithPackedRectangles(PackedRectanglesGenerationOptions options)
+        {
+            return _packedRectangles.Generate(options);
         }
     }
 }

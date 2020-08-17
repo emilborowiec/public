@@ -10,7 +10,7 @@ namespace PonderingProgrammer.Map2d.Svg
         private FeatureTilesFactory _featureTilesFactory = new FeatureTilesFactory();
         private FeatureSvgStyleMapper _styleMapper = new FeatureSvgStyleMapper();
         
-        public SvgDocument RenderToSvg(IMap2d<bool> map, double scale)
+        public SvgDocument RenderToSvg(IGridMap map, double scale)
         {
             var svg = new SvgDocument();
             var cellFeatures = _featureTilesFactory.Map2dToFeatureObjects(map, scale);
