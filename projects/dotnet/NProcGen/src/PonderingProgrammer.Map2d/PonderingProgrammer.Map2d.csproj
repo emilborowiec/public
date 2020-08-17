@@ -4,10 +4,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <PropertyGroup>
-	  <OutDir>$(SolutionDir)artifacts\$(MSBuildProjectName)\$(Configuration)</OutDir>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="NetTopologySuite" Version="2.0.0" />
     <PackageReference Include="PonderingProgrammer.GridMath" Version="0.2.5" />
