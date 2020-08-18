@@ -9,7 +9,7 @@ namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
 {
     public class PoppingRectangles
     {
-        public ManhattanFixedSquareGridMap<bool> Generate(PoppingRectanglesGenerationOptions options)
+        public IGridMap Generate(PoppingRectanglesGenerationOptions options)
         {
             var context = new ValidationContext(options);
             var validationResults = new List<ValidationResult>();
@@ -19,13 +19,14 @@ namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
             }
             var rand = new Random();
             var randBoxFactory = new RandomBoxFactory();
-            var map = GenerateFixedMap(options.Width, options.Height);
-            var superBounds = map.GetBounds();
+            var map = new GridMap(options.Width, options.Height);
+            var superBounds = map.Bounds;
 
             var firstRect = randBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);
             firstRect = firstRect.Relate(superBounds, Relation.CenterToCenter(),
                 Relation.CenterToCenter());
-            map.SetInBounds(true, firstRect);
+            
+            map.AddFeature(new Gr);
             var seeds = FindFreeRangeSurfaceCells(map, options.MinRectSize);
             while (seeds.Count > 0)
             {
@@ -48,10 +49,10 @@ namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
 
         private List<GridMapField> FindFreeRangeSurfaceCells(IGridMap map, int range)
         {
-            var minX = map.GetBounds().MinX + range;
-            var minY = map.GetBounds().MinY + range;
-            var maxX = map.GetBounds().MaxXExcl - range;
-            var maxY = map.GetBounds().MaxYExcl - range;
+            var minX = map.Bounds.MinX + range;
+            var minY = map.Bounds.MinY + range;
+            var maxX = map.Bounds.MaxXExcl - range;
+            var maxY = map.Bounds.MaxYExcl - range;
             return FindFreeSurfaceCells(map).Where(c =>
                 c.Coordinates.X >= minX && c.Coordinates.Y >= minY && c.Coordinates.X < maxX && c.Coordinates.Y < maxY)
                 .ToList();
@@ -61,11 +62,6 @@ namespace PonderingProgrammer.Map2d.ProcGen.PoppingRectangles
         {
             return map.FindCellsByValue(v => v)
                 .Where(c => map.FindAdjacentFields(c.Coordinates).Any(ac => ac.Value == false));
-        }
-        
-        private ManhattanFixedSquareGridMap<bool> GenerateFixedMap(int width, int height)
-        {
-            return new ManhattanFixedSquareGridMap<bool>(width, height);
         }
     }
 }

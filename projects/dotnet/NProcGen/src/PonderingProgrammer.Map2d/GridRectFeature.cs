@@ -4,12 +4,12 @@ using PonderingProgrammer.Map2d.FeatureObjects;
 
 namespace PonderingProgrammer.Map2d
 {
-    public class GridPointFeature : IGridFeatureObject
+    public class GridRectFeature : IGridFeatureObject
     {
-        public GridPointFeature(FeatureType featureType, GridCoordinatePair coordinates)
+        public GridRectFeature(FeatureType featureType, GridBoundingBox box)
         {
             FeatureType = featureType;
-            Shape = new GridPoint(coordinates);
+            Shape = new GridRectangle(box);
         }
 
         public IGridShape Shape { get; }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PonderingProgrammer.Map2d.ProcGen;
 using PonderingProgrammer.Map2d.ProcGen.BuddingRectangles;
+using PonderingProgrammer.Map2d.ProcGen.PackedRectangles;
 using PonderingProgrammer.Map2d.ProcGen.PoppingRectangles;
 using PonderingProgrammer.Map2d.Svg;
 using PonderingProgrammer.NProcGen.Web.Models;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using PonderingProgrammer.GridMath;
+using PonderingProgrammer.Map2d.FeatureObjects;
 using PonderingProgrammer.Map2d.ProcGen.Randoms;
 using RandomBoxFactory = PonderingProgrammer.Map2d.ProcGen.Randoms.RandomBoxFactory;
 
@@ -14,16 +15,14 @@ namespace PonderingProgrammer.Map2d.ProcGen.BuddingRectangles
         
         public IGridMap Generate(BuddingRectanglesGenerationOptions options)
         {
-            var map = GenerateFixedMap(options.Width, options.Height);
-            var rooms = new List<Room>();
+            var map = new GridMap(options.Width, options.Height);
             var roomsToVisit = new List<Room>();
 
             var box = _randomBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);
-            box = box.Relate(map.GetBounds(), Relation.CenterToCenter(),
+            box = box.Relate(map.Bounds, Relation.CenterToCenter(),
                 Relation.CenterToCenter());
             var firstRoom = new Room { Box = box };
-            map.SetInBounds(true, firstRoom.Box);
-            rooms.Add(firstRoom);
+            map.AddFeature(new GridRectFeature(FeatureType.Room, box));
             roomsToVisit.Add(firstRoom);
 
             while (roomsToVisit.Count > 0)
@@ -35,7 +34,7 @@ namespace PonderingProgrammer.Map2d.ProcGen.BuddingRectangles
                     if (!room.WallsToRooms.ContainsKey(direction))
                     {
                         box = box.PlaceBeside(room.Box, direction);
-                        if (map.FindCellsInBox(box).Any(c => c.Value) || !map.GetBounds().Contains(box))
+                        if (map.GetFeaturesInBoundary(box).Any() || !map.Bounds.Contains(box))
                         {
                             continue;
                         }
@@ -43,8 +42,7 @@ namespace PonderingProgrammer.Map2d.ProcGen.BuddingRectangles
                         // no collision and within map bounds
                         var newRoom = new Room {Box = box};
                         room.WallsToRooms[direction] = newRoom;
-                        map.SetInBounds(true, box);
-                        rooms.Add(newRoom);
+                        map.AddFeature(new GridRectFeature(FeatureType.Room, box));
                         roomsToVisit.Add(newRoom);
                     }
                 }
@@ -53,22 +51,5 @@ namespace PonderingProgrammer.Map2d.ProcGen.BuddingRectangles
             }
             return map;
         }
-
-        private Axis getAxis(Axis preferredAxis)
-        {
-            var notPreferred = preferredAxis == Axis.Horizontal ? Axis.Vertical : Axis.Horizontal;
-            return _rand.Chance(0.25) ? notPreferred : preferredAxis;
-        }
-
-        private ManhattanFixedSquareGridMap<bool> GenerateFixedMap(int width, int height)
-        {
-            return new ManhattanFixedSquareGridMap<bool>(width, height);
-        }
-    }
-    
-    public enum Axis
-    {
-        Horizontal,
-        Vertical
     }
 }

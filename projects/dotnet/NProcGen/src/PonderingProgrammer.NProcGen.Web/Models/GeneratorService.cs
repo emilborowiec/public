@@ -1,6 +1,7 @@
 ﻿using PonderingProgrammer.Map2d;
 using PonderingProgrammer.Map2d.ProcGen;
 using PonderingProgrammer.Map2d.ProcGen.BuddingRectangles;
+using PonderingProgrammer.Map2d.ProcGen.PackedRectangles;
 using PonderingProgrammer.Map2d.ProcGen.PoppingRectangles;
 
 namespace PonderingProgrammer.NProcGen.Web.Models

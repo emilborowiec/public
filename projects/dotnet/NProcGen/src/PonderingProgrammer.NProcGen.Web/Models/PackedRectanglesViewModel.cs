@@ -1,4 +1,5 @@
 ﻿using PonderingProgrammer.Map2d.ProcGen.BuddingRectangles;
+using PonderingProgrammer.Map2d.ProcGen.PackedRectangles;
 
 namespace PonderingProgrammer.NProcGen.Web.Models
 {

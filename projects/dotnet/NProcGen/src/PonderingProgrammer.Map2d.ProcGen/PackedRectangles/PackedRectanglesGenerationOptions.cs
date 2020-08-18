@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PonderingProgrammer.Map2d.ProcGen.BuddingRectangles
+namespace PonderingProgrammer.Map2d.ProcGen.PackedRectangles
 {
     public class PackedRectanglesGenerationOptions : Map2dGenerationOptions, IValidatableObject
     {

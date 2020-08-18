@@ -28,8 +28,13 @@ namespace PonderingProgrammer.Map2d
         
         Dictionary<int, List<IGridFeatureObject>> FeatureLayers { get; }
 
+        void AddFeature(IGridFeatureObject feature, int layer = 0);
+
         GridMapField GetFieldAt(int x, int y);
         GridMapField GetFieldAt(GridCoordinatePair coordinates);
+        ICollection<GridMapField> GetFieldsInBoundary(GridBoundingBox boundary);
+        ICollection<IGridFeatureObject> GetFeaturesInBoundary(GridBoundingBox boundary);
+        
         public List<IGridFeatureObject> FindFeatures(FeatureType featureType);
         IEnumerable<GridMapField> FindFields(Func<GridMapField, bool> predicate);
         

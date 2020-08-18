@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PonderingProgrammer.GridMath" Version="0.2.5" />
+    <PackageReference Include="PonderingProgrammer.GridMath" Version="0.3.0" />
   </ItemGroup>
 
 </Project>

@@ -45,9 +45,24 @@ namespace PonderingProgrammer.Map2d
 
         public Dictionary<int, List<IGridFeatureObject>> FeatureLayers { get; } = new Dictionary<int, List<IGridFeatureObject>>();
 
+        public void AddFeature(IGridFeatureObject feature, int layer = 0)
+        {
+            if (!FeatureLayers.ContainsKey(layer)) FeatureLayers[layer] = new List<IGridFeatureObject>();
+            FeatureLayers[layer].Add(feature);
+        }
+
         public GridMapField GetFieldAt(int x, int y) => HasField(x, y) ? Fields[GetFieldIndex(x, y)] : null;
 
         public GridMapField GetFieldAt(GridCoordinatePair coordinates) => GetFieldAt(coordinates.X, coordinates.Y);
+        public ICollection<GridMapField> GetFieldsInBoundary(GridBoundingBox boundary)
+        {
+            return Fields.Where(f => boundary.Contains(f.Coordinates)).ToList();
+        }
+
+        public ICollection<IGridFeatureObject> GetFeaturesInBoundary(GridBoundingBox boundary)
+        {
+            return FeatureLayers.Values.SelectMany(list => list).Where(feature => feature.Shape.Overlaps(boundary)).ToList();
+        }
 
         public List<IGridFeatureObject> FindFeatures(FeatureType featureType)
         {
