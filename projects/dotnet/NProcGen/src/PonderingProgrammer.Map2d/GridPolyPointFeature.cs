@@ -7,6 +7,12 @@ namespace PonderingProgrammer.Map2d
 {
     public class GridPolyPointFeature : IGridFeatureObject
     {
+        public GridPolyPointFeature(FeatureType featureType, GridPolyPoint polyPoint)
+        {
+            FeatureType = featureType;
+            Shape = polyPoint;
+        }
+        
         public GridPolyPointFeature(FeatureType featureType, IEnumerable<GridCoordinatePair> coordinates)
         {
             FeatureType = featureType;
@@ -15,5 +21,7 @@ namespace PonderingProgrammer.Map2d
         
         public IGridShape Shape { get; }
         public FeatureType FeatureType { get; }
+
+        public GridPolyPoint PolyPoint => (GridPolyPoint) Shape;
     }
 }

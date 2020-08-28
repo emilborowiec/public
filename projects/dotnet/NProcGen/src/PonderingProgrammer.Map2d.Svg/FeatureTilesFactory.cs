@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿﻿using System.Collections.Generic;
 
 namespace PonderingProgrammer.Map2d.FeatureObjects
 {
@@ -6,7 +6,7 @@ namespace PonderingProgrammer.Map2d.FeatureObjects
     {
         private MapGeometryFactory _factory = new MapGeometryFactory();
         
-        public List<IGridFeatureObject> Map2dToFeatureObjects(IMap2d<bool> map, double scale)
+        public List<IGridFeatureObject> Map2dToFeatureObjects(IGridMap map, double scale)
         {
             var list = new List<IGridFeatureObject>();
             foreach (var cell in map.GetCells())

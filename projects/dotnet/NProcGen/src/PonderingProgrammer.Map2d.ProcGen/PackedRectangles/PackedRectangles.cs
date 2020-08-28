@@ -18,7 +18,7 @@ namespace PonderingProgrammer.Map2d.ProcGen.PackedRectangles
             {
                 rectangles[i] = _randomBoxFactory.RandomSizeBox(options.MinRectSize, options.MaxRectSize);
             }
-            GridBoundingBoxes.Pack(rectangles, BoxAlignment.TOP_LEFT, options.CorridorLength);
+            GridBoundingBoxes.Pack(rectangles, BoxAlignment.TopLeft, options.CorridorLength);
             rectangles = rectangles.Where(r => map.Bounds.Contains(r)).ToArray();
             foreach (var rectangle in rectangles)
             {

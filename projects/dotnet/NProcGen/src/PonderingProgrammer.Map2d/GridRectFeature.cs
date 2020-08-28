@@ -6,6 +6,12 @@ namespace PonderingProgrammer.Map2d
 {
     public class GridRectFeature : IGridFeatureObject
     {
+        public GridRectFeature(FeatureType featureType, GridRectangle rect)
+        {
+            FeatureType = featureType;
+            Shape = rect;
+        }
+
         public GridRectFeature(FeatureType featureType, GridBoundingBox box)
         {
             FeatureType = featureType;
@@ -14,5 +20,7 @@ namespace PonderingProgrammer.Map2d
 
         public IGridShape Shape { get; }
         public FeatureType FeatureType { get; }
+
+        public GridRectangle Rectangle => (GridRectangle) Shape;
     }
 }

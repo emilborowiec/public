@@ -7,12 +7,15 @@ namespace PonderingProgrammer.Map2d.Svg
 {
     public class Map2dSvgRenderer
     {
-        private FeatureTilesFactory _featureTilesFactory = new FeatureTilesFactory();
         private FeatureSvgStyleMapper _styleMapper = new FeatureSvgStyleMapper();
         
         public SvgDocument RenderToSvg(IGridMap map, double scale)
         {
             var svg = new SvgDocument();
+            SvgElement background = new SvgRectangle();
+            svg.Children.Add(background);
+            
+            
             var cellFeatures = _featureTilesFactory.Map2dToFeatureObjects(map, scale);
             foreach (var cell in cellFeatures)
             {

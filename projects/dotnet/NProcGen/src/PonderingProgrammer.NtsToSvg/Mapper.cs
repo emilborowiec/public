@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using NetTopologySuite.Geometries;
+using NetTopologySuite.Triangulate;
 using Svg;
 
 namespace PonderingProgrammer.NtsToSvg
@@ -29,7 +30,7 @@ namespace PonderingProgrammer.NtsToSvg
             svgPoly.Points = new SvgPointCollection();
             svgPoly.Points.AddRange(Map(polygon.Coordinates));
             svgPoly.Fill = new SvgColourServer(Color.Aqua);
-            svgPoly.Stroke = new SvgColourServer(Color.Black);
+            svgPoly.Stroke = new SvgColourServer(Color.Black); 
             return svgPoly;
         }
 

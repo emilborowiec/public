@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.NProcGe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.Map2d.Svg", "src\PonderingProgrammer.Map2d.Svg\PonderingProgrammer.Map2d.Svg.csproj", "{A7EC9741-683E-4A04-8AF6-AE9ED6A80147}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.ProcGenDemo", "samples\PonderingProgrammer.ProcGenDemo\PonderingProgrammer.ProcGenDemo.csproj", "{7D22EB23-F4C9-4808-90F5-6BC92141509B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{A7EC9741-683E-4A04-8AF6-AE9ED6A80147}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7EC9741-683E-4A04-8AF6-AE9ED6A80147}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7EC9741-683E-4A04-8AF6-AE9ED6A80147}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D22EB23-F4C9-4808-90F5-6BC92141509B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D22EB23-F4C9-4808-90F5-6BC92141509B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D22EB23-F4C9-4808-90F5-6BC92141509B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D22EB23-F4C9-4808-90F5-6BC92141509B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{7E589467-1C1E-4AAA-B262-49DFE424F324} = {86960D7D-509D-4C69-9057-95362FB75A65}
 		{352DD18C-1F8F-45E3-8191-8A82B4DD5D0E} = {A6CA77C9-F043-4D2A-AEAD-6F447BC5215F}
 		{A7EC9741-683E-4A04-8AF6-AE9ED6A80147} = {A6CA77C9-F043-4D2A-AEAD-6F447BC5215F}
+		{7D22EB23-F4C9-4808-90F5-6BC92141509B} = {86960D7D-509D-4C69-9057-95362FB75A65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {41401C5D-2346-4DB1-9FE4-B52085142104}

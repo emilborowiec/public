@@ -6,6 +6,12 @@ namespace PonderingProgrammer.Map2d
 {
     public class GridPointFeature : IGridFeatureObject
     {
+        public GridPointFeature(FeatureType featureType, GridPoint point)
+        {
+            FeatureType = featureType;
+            Shape = point;
+        }
+
         public GridPointFeature(FeatureType featureType, GridCoordinatePair coordinates)
         {
             FeatureType = featureType;
@@ -14,5 +20,7 @@ namespace PonderingProgrammer.Map2d
 
         public IGridShape Shape { get; }
         public FeatureType FeatureType { get; }
+
+        public GridPoint Point => (GridPoint) Shape;
     }
 }
