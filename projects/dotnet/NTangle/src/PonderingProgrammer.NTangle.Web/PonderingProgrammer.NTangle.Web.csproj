@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <ProjectReference Include="..\PonderingProgrammer.SofTangle.Core\PonderingProgrammer.SofTangle.Core.csproj" />
+    <ProjectReference Include="..\PonderingProgrammer.NTangle.Core\PonderingProgrammer.NTangle.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

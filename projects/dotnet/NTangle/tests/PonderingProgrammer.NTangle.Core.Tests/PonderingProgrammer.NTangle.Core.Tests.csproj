@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PonderingProgrammer.SofTangle.Core\PonderingProgrammer.SofTangle.Core.csproj" />
+    <ProjectReference Include="..\..\src\PonderingProgrammer.NTangle.Core\PonderingProgrammer.NTangle.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{56B729B4-2BE8-477F-A6BA-12FEBC6C6919}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.SofTangle.Core", "src\PonderingProgrammer.SofTangle.Core\PonderingProgrammer.SofTangle.Core.csproj", "{9D5F0B20-3819-468D-8D45-AC168B21F6E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.NTangle.Core", "src\PonderingProgrammer.NTangle.Core\PonderingProgrammer.NTangle.Core.csproj", "{9D5F0B20-3819-468D-8D45-AC168B21F6E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.SofTangle.Web", "src\PonderingProgrammer.SofTangle.Web\PonderingProgrammer.SofTangle.Web.csproj", "{8015BA17-9D0B-4B07-8740-70995461F3D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.NTangle.Web", "src\PonderingProgrammer.NTangle.Web\PonderingProgrammer.NTangle.Web.csproj", "{8015BA17-9D0B-4B07-8740-70995461F3D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FF527959-C8AE-49C6-9FA5-C71EFCD54D69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.SofTangle.Core.Tests", "tests\PonderingProgrammer.SofTangle.Core.Tests\PonderingProgrammer.SofTangle.Core.Tests.csproj", "{A7AC4705-7481-41EB-89EF-C2C71964D48E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonderingProgrammer.NTangle.Core.Tests", "tests\PonderingProgrammer.NTangle.Core.Tests\PonderingProgrammer.NTangle.Core.Tests.csproj", "{A7AC4705-7481-41EB-89EF-C2C71964D48E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
