@@ -1,5 +1,4 @@
 ﻿@page
-@using PonderingProgrammer.NTangle.Core
 @model TipsModel
 
 @{
@@ -9,7 +8,7 @@
 <div>
     <h1 class="display-4">List of software development tips</h1>
     <dl>
-        @foreach (Tip t in Model.Tips)
+        @foreach (var t in Model.Tips)
         {
             <dt>@t.Title</dt>
             <dd>@t.Summary</dd>

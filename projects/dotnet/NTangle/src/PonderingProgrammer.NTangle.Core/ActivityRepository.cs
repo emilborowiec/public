@@ -4,23 +4,23 @@ using System.Linq;
 
 namespace PonderingProgrammer.NTangle.Core
 {
-    public class TipRepository : ITipRepository
+    public class ActivityRepository : IActivityRepository
     {
         private readonly NTangleContext _context;
 
-        public TipRepository(NTangleContext context)
+        public ActivityRepository(NTangleContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public IEnumerable<Tip> FetchTips()
+        public IEnumerable<Activity> FetchActivities()
         {
-            return _context.Tips.ToList();
+            return _context.Activities.ToList();
         }
 
-        public void Save(Tip tip)
+        public void Save(Activity activity)
         {
-            _context.Add(tip);
+            _context.Add(activity);
             _context.SaveChanges();
         }
     }

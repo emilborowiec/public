@@ -10,19 +10,19 @@ namespace PonderingProgrammer.NTangle.Web.Pages
     public class ActivitiesModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly ITipRepository _tipRepository;
+        private readonly IActivityRepository _activityRepository;
 
         public List<Activity> Activities { get; set; }
 
-        public ActivitiesModel(ILogger<IndexModel> logger, ITipRepository tipRepository)
+        public ActivitiesModel(ILogger<IndexModel> logger, IActivityRepository activityRepository)
         {
             _logger = logger;
-            _tipRepository = tipRepository ?? throw new ArgumentNullException(nameof(tipRepository));
+            _activityRepository = activityRepository ?? throw new ArgumentNullException(nameof(activityRepository));
         }
 
         public void OnGet()
         {
-            Activities = _tipRepository.FetchActivities().ToList();
+            Activities = _activityRepository.FetchActivities().ToList();
         }
     }
 }

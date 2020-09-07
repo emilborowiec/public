@@ -1,0 +1,15 @@
+﻿@page
+@model ActivityModel
+
+@{
+    ViewData["Title"] = "Activity";
+}
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label>Name</label>
+        <input name="name" class="form-control" value="@Model.Name"/>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>

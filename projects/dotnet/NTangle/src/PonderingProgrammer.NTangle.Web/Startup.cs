@@ -15,6 +15,8 @@ namespace PonderingProgrammer.NTangle.Web
             services.AddSession();
             
             services.AddScoped<ITipRepository, TipRepository>();
+            services.AddScoped<ITipSetRepository, TipSetRepository>();
+            services.AddScoped<IActivityRepository, ActivityRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
