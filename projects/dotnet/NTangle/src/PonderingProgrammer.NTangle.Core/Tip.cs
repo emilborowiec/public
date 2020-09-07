@@ -8,7 +8,7 @@ namespace PonderingProgrammer.NTangle.Core
         public string Title { get; set; }
         public int TipTypeId { get; set; }
         public TipType TipType { get; set; }
-        public int ActivityId { get; set; }
+        public int? ActivityId { get; set; }
         public Activity Activity { get; set; }
         public string Summary { get; set; }
         public string ReferenceUrl { get; set; }

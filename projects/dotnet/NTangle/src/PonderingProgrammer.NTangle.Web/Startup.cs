@@ -13,6 +13,8 @@ namespace PonderingProgrammer.NTangle.Web
             services.AddDbContext<NTangleContext>();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddSession();
+            
+            services.AddScoped<ITipRepository, TipRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
