@@ -1,0 +1,18 @@
+﻿@page
+@using PonderingProgrammer.NTangle.Core
+@model ActivitiesModel
+
+@{
+    ViewData["Title"] = "Tips";
+}
+
+<div>
+    <h1 class="display-4">Software development activity domains</h1>
+    <dl>
+        @foreach (Activity a in Model.Activities)
+        {
+            <dt>@a.Name</dt>
+            <dd>@a.Description</dd>
+        }
+    </dl>
+</div>

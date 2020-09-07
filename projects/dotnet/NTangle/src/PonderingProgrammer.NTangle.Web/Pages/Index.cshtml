@@ -1,17 +1,10 @@
 ﻿@page
-@using PonderingProgrammer.NTangle.Core
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <dl>
-        @foreach (Tip t in Model.Tips)
-        {
-            <dt>@t.Title</dt>
-            <dd>@t.Summary</dd>
-        }
-    </dl>
+    <h1 class="display-4">NTangle</h1>
+    <p>A tangle of software development tips.</p>
 </div>

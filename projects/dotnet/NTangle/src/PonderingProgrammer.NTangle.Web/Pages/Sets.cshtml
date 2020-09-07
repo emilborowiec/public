@@ -1,0 +1,19 @@
+﻿@page
+@using PonderingProgrammer.NTangle.Core
+@model SetsModel
+
+@{
+    ViewData["Title"] = "Tips";
+}
+
+<div>
+    <h1 class="display-4">Known groupings of software development tips</h1>
+    <dl>
+        @foreach (TipSet ts in Model.TipSets)
+        {
+            <dt>@ts.Name</dt>
+            <dd>@ts.Summary</dd>
+        }
+    </dl>
+</div>
+

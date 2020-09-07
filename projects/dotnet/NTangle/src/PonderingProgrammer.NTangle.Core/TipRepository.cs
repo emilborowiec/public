@@ -17,5 +17,15 @@ namespace PonderingProgrammer.NTangle.Core
         {
             return _context.Tips.ToList();
         }
+
+        public IEnumerable<TipSet> FetchTipSets()
+        {
+            return _context.TipSets.ToList();
+        }
+
+        public IEnumerable<Activity> FetchActivities()
+        {
+            return _context.Activities.ToList();
+        }
     }
 }
