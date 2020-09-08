@@ -11,7 +11,7 @@
     <dl>
         @foreach (var a in Model.Activities)
         {
-            <dt>@a.Name</dt>
+            <dt><a asp-page="/Activity" asp-route-id="@a.Id">@a.Name</a></dt>
             <dd>@a.Description</dd>
         }
     </dl>

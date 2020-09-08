@@ -13,6 +13,11 @@ namespace PonderingProgrammer.NTangle.Core
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        public Activity Get(int id)
+        {
+            return _context.Activities.FirstOrDefault(a => a.Id == id);
+        }
+
         public IEnumerable<Activity> FetchActivities()
         {
             return _context.Activities.ToList();
