@@ -1,0 +1,29 @@
+﻿header {
+    background-color: cadetblue;
+}
+
+nav > div {
+    padding: 8px;
+}
+
+nav h1 {
+    display: inline;
+}
+
+nav ul {
+    display: inline;
+    list-style-type: none;
+}
+
+nav li {
+    display: inline;
+}
+
+main {
+    padding: 8px;
+}
+
+footer {
+    padding: 8px;
+    background-color: cadetblue;
+}

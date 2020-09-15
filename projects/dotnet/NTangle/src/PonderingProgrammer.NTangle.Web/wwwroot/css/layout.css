@@ -1,0 +1,20 @@
+﻿html {
+    box-sizing: content-box;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+}
+
+main {
+    flex: 1;
+}
