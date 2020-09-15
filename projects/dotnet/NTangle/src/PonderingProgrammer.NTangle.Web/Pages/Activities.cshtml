@@ -1,18 +1,33 @@
 ﻿@page
+@using PonderingProgrammer.NTangle.Model
 @model ActivitiesModel
 
 @{
     ViewData["Title"] = "Activities";
 }
 
+@functions{
+    private async Task RenderActivityTree(Activity activity, int depth)
+    {
+        <div class="spacer"></div>
+                             
+        foreach (var child in activity.Children)
+        {
+            <h3><a asp-page="/Activity" asp-route-id="@child.Id">@child.Name</a></h3>
+            <p>@child.Description</p>
+            await RenderActivityTree(child, depth + 1);
+        }
+    }
+}
+
 <div>
     <h1 class="display-4">Software development activity domains</h1>
     <a asp-page="/Activity">Add new</a>
-    <dl>
-        @foreach (var a in Model.RootActivities)
-        {
-            <dt><a asp-page="/Activity" asp-route-id="@a.Id">@a.Name</a></dt>
-            <dd>@a.Description</dd>
-        }
-    </dl>
+
+    @foreach (var a in Model.RootActivities)
+    {
+        <h2><a asp-page="/Activity" asp-route-id="@a.Id">@a.Name</a></h2>
+        <p>@a.Description</p>
+        await RenderActivityTree(a, 0);
+    }
 </div>

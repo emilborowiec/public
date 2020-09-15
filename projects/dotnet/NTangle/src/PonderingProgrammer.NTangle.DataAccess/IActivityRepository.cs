@@ -5,7 +5,8 @@ namespace PonderingProgrammer.NTangle.DataAccess
 {
     public interface IActivityRepository : IRepository<Activity>
     {
-        IEnumerable<Activity> FetchRootActivities();
+        IEnumerable<Activity> FetchRoots();
+        IEnumerable<Activity> FetchAll();
         IEnumerable<Activity> FetchNonDescendantActivities(Activity activity);
     }
 }

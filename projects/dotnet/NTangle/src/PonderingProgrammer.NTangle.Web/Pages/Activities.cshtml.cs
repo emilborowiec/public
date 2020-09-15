@@ -23,7 +23,7 @@ namespace PonderingProgrammer.NTangle.Web.Pages
 
         public void OnGet()
         {
-            RootActivities = _activityRepository.FetchRootActivities().ToList();
+            RootActivities = _activityRepository.FetchAll().ToList().Where(a => a.Parent == null).ToList();
         }
     }
 }

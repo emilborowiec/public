@@ -24,7 +24,12 @@ namespace PonderingProgrammer.NTangle.DataAccess
             _context.Activities.Add(activity);
         }
 
-        public IEnumerable<Activity> FetchRootActivities()
+        public IEnumerable<Activity> FetchAll()
+        {
+            return _context.Activities;
+        }
+
+        public IEnumerable<Activity> FetchRoots()
         {
             return _context.Activities.Where(a => a.Parent == null);
         }
@@ -36,7 +41,7 @@ namespace PonderingProgrammer.NTangle.DataAccess
                 return _context.Activities;
             }
             
-            var roots = FetchRootActivities();
+            var roots = FetchRoots();
             var queue = new Queue<Activity>();
             var list = new List<Activity>();
             foreach (var other in roots.Where(a => a.Id != activity.Id))
