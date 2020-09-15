@@ -9,7 +9,7 @@
     <h1 class="display-4">Software development activity domains</h1>
     <a asp-page="/Activity">Add new</a>
     <dl>
-        @foreach (var a in Model.Activities)
+        @foreach (var a in Model.RootActivities)
         {
             <dt><a asp-page="/Activity" asp-route-id="@a.Id">@a.Name</a></dt>
             <dd>@a.Description</dd>

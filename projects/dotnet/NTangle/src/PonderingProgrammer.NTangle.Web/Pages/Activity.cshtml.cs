@@ -3,16 +3,19 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using PonderingProgrammer.NTangle.Core;
+using PonderingProgrammer.NTangle.DataAccess;
+using PonderingProgrammer.NTangle.Model;
 
 namespace PonderingProgrammer.NTangle.Web.Pages
 {
     public class ActivityModel : PageModel
     {
+        private readonly NTangleContext _context;
         private readonly IActivityRepository _repository;
 
-        public ActivityModel(IActivityRepository repository)
+        public ActivityModel(NTangleContext context, IActivityRepository repository)
         {
+            _context = context;
             _repository = repository;
         }
 
@@ -24,10 +27,9 @@ namespace PonderingProgrammer.NTangle.Web.Pages
 
         public void OnGet(int id)
         {
-            CurrentActivity = _repository.Get(id);
-            ParentOptions = _repository.FetchActivities()
-                                       .Where(a => a.Id != id)
-                                       .Select(a => new SelectListItem {Value = a.Id.ToString(), Text = a.Name,})
+            CurrentActivity = _repository.FindById(id);
+            ParentOptions = _repository.FetchNonDescendantActivities(CurrentActivity)
+                                       .Select(a => new SelectListItem {Value = a.Id.ToString(), Text = a.Name})
                                        .ToList();
             if (CurrentActivity != null)
             {
@@ -35,7 +37,7 @@ namespace PonderingProgrammer.NTangle.Web.Pages
                 {
                     Name = CurrentActivity.Name,
                     Description = CurrentActivity.Description,
-                    ParentId = CurrentActivity.ParentId ?? 0,
+                    ParentId = CurrentActivity.Parent?.Id ?? 0,
                 };
             }
         }
@@ -44,16 +46,22 @@ namespace PonderingProgrammer.NTangle.Web.Pages
         {
             if (!ModelState.IsValid)
             {
-                CurrentActivity = _repository.Get(id);
+                CurrentActivity = _repository.FindById(id);
                 return Page();
             }
             
-            CurrentActivity = _repository.Get(id) ?? new Activity();
-            CurrentActivity.Name = Input.Name;
+            CurrentActivity = _repository.FindById(id) ?? new Activity(0, Input.Name);
             CurrentActivity.Description = Input.Description;
-            CurrentActivity.Parent = _repository.Get(Input.ParentId);
-            
-            _repository.Save(CurrentActivity);
+            if (_repository.FindById(Input.ParentId) is {} parent)
+            {
+                parent.AddChild(CurrentActivity);
+            }
+            else
+            {
+                _repository.Add(CurrentActivity);
+            }
+
+            _context.SaveChanges();
             
             return new RedirectToPageResult("/Activities");
         }

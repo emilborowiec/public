@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PonderingProgrammer.NTangle.Model;
 
-namespace PonderingProgrammer.NTangle.Core
+namespace PonderingProgrammer.NTangle.DataAccess
 {
     public class TipRepository : ITipRepository
     {
@@ -13,15 +14,19 @@ namespace PonderingProgrammer.NTangle.Core
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public IEnumerable<Tip> FetchTips()
+        public Tip FindById(int id)
         {
-            return _context.Tips.ToList();
+            return _context.Tips.FirstOrDefault(dao => dao.Id == id);
         }
 
-        public void Save(Tip tip)
+        public void Add(Tip tip)
         {
             _context.Add(tip);
-            _context.SaveChanges();
+        }
+
+        public IEnumerable<Tip> FetchAll()
+        {
+            return _context.Tips;
         }
     }
 }

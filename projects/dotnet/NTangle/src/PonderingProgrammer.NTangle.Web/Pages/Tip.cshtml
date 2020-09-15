@@ -1,0 +1,30 @@
+﻿@page
+@using PonderingProgrammer.NTangle.Model
+@model TipModel
+
+@{
+    ViewData["Title"] = "Tip";
+}
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <div class="">
+        <label asp-for="Input.Name">Name</label>
+        <input asp-for="Input.Name" class=""/>
+    </div>
+    <div class="">
+        <label asp-for="Input.Summary">Summary</label>
+        <input asp-for="Input.Summary" class=""/>
+    </div>
+    <div class="">
+        <label asp-for="Input.TipType">Tip type</label>
+        <select asp-for="Input.TipType" asp-items="Html.GetEnumSelectList<TipType>()" class=""></select>
+    </div>
+    <div class="">
+        <label asp-for="Input.ActivityId">Activity</label>
+        <select asp-for="Input.ActivityId" asp-items="@Model.ActivityOptions" class="">
+            <option value="0">Software Development</option>
+        </select>
+    </div>
+    <button class="" type="submit">Submit</button>
+</form>

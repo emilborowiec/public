@@ -8,10 +8,10 @@
 <div>
     <h1 class="display-4">List of software development tips</h1>
     <dl>
-        @foreach (var t in Model.Tips)
-        {
-            <dt>@t.Title</dt>
-            <dd>@t.Summary</dd>
-        }
+         @foreach (var t in Model.Tips)
+         {
+             <dt><a asp-page="/Tip" asp-route-id="@t.Id">@t.Name</a></dt>
+             <dd>@t.Summary</dd>
+         }
     </dl>
 </div>

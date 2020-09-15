@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PonderingProgrammer.NTangle.Core\PonderingProgrammer.NTangle.Core.csproj" />
+    <ProjectReference Include="..\..\src\PonderingProgrammer.NTangle.Model\PonderingProgrammer.NTangle.Model.csproj" />
   </ItemGroup>
 
 </Project>

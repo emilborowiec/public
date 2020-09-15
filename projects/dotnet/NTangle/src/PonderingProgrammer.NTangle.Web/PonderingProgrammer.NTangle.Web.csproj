@@ -1,11 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <ProjectReference Include="..\PonderingProgrammer.NTangle.Core\PonderingProgrammer.NTangle.Core.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.7" />
+    <ProjectReference Include="..\PonderingProgrammer.NTangle.DataAccess\PonderingProgrammer.NTangle.DataAccess.csproj" />
+    <ProjectReference Include="..\PonderingProgrammer.NTangle.Model\PonderingProgrammer.NTangle.Model.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
