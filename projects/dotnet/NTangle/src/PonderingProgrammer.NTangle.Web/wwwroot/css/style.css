@@ -8,6 +8,7 @@ nav > div {
 
 nav h1 {
     display: inline;
+    font-size: 2em;
 }
 
 nav ul {
@@ -20,10 +21,22 @@ nav li {
 }
 
 main {
-    padding: 8px;
 }
 
 footer {
     padding: 8px;
     background-color: cadetblue;
+}
+
+div.hero {
+    background-color: #1b1e21;
+    color: #d6d8d9;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+}
+
+div.hero > h1 {
+    font-size: 5em;
 }
