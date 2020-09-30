@@ -4,7 +4,12 @@ namespace PonderingProgrammer.QuickSheet.Model
 {
     public class Cheat
     {
-        public string Problem { get; set; }
-        public List<string> Solutions { get; set; }
+        public Cheat(string caption)
+        {
+            Caption = caption;
+        }
+
+        public string Caption { get; }
+        public List<string> Entries { get; } = new List<string>();
     }
 }

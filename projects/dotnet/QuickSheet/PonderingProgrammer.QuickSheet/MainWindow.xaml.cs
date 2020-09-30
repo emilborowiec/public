@@ -23,6 +23,8 @@ namespace PonderingProgrammer.QuickSheet
         public MainWindow()
         {
             InitializeComponent();
+            
+            var cheatSheets = CheatSheetLoader.LoadCheatSheets();
         }
     }
 }

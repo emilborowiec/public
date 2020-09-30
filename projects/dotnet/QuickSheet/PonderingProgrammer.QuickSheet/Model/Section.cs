@@ -4,7 +4,12 @@ namespace PonderingProgrammer.QuickSheet.Model
 {
     public class Section
     {
-        public string Name { get; set; }
-        public HashSet<Cheat> Cheats { get; set; }
+        public Section(string name)
+        {
+            Name = name;
+        }
+
+        public string Name { get; }
+        public HashSet<Cheat> Cheats { get; } = new HashSet<Cheat>();
     }
 }
