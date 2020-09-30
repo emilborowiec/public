@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PonderingProgrammer.CheatSheet
+namespace PonderingProgrammer.QuickSheet
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
