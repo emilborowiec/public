@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using PonderingProgrammer.QuickSheet.Model;
 
-namespace PonderingProgrammer.QuickSheet
+namespace PonderingProgrammer.QuickSheet.Services
 {
     public static class CheatSheetLoader
     {
