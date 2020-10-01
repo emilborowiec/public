@@ -10,6 +10,6 @@ namespace PonderingProgrammer.QuickSheet.Model
         }
 
         public string Name { get; }
-        public HashSet<Cheat> Cheats { get; } = new HashSet<Cheat>();
+        public List<Cheat> Cheats { get; } = new List<Cheat>();
     }
 }

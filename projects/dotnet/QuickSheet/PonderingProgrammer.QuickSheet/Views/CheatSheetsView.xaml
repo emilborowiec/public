@@ -3,41 +3,79 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:PonderingProgrammer.QuickSheet.Views"
              xmlns:model="clr-namespace:PonderingProgrammer.QuickSheet.Model"
+             xmlns:vm="clr-namespace:PonderingProgrammer.QuickSheet.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.DataContext>
+        <vm:CheatSheetsViewModel />
+    </UserControl.DataContext>
+    
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type model:Cheat}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="{Binding Caption}"></TextBlock>
-                <ListBox Grid.Row="1" ItemsSource="{Binding Entries}"></ListBox>
-            </Grid>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        
+        <DataTemplate x:Key="EntryDataTemplate">
+            <TextBlock Margin="4" 
+                       Padding="4,0" 
+                       Background="Azure" 
+                       Text="{Binding}" />
         </DataTemplate>
         
-        <DataTemplate DataType="{x:Type model:Section}">
+        <DataTemplate DataType="{x:Type model:Cheat}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="12" 
+                           Text="{Binding Caption}" />
+                <ItemsControl ItemsSource="{Binding Entries}" 
+                              ItemTemplate="{StaticResource EntryDataTemplate}" />
+            </StackPanel>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:SectionViewModel}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="{Binding Name}"></TextBlock>
-                <ListBox Grid.Row="1" ItemsSource="{Binding Cheats}"></ListBox>
+                <TextBlock Grid.Row="0" 
+                           Visibility="{Binding IsNotRootSection, Converter={StaticResource BoolToVisibilityConverter}}"
+                           Text="{Binding Title}">
+                </TextBlock>
+                <ItemsControl 
+                    Grid.Row="1" 
+                    ItemsSource="{Binding Cheats}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel IsItemsHost="True" 
+                                       Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="{Binding SheetTitle, Mode=OneWay}"></TextBlock>
-        <ListBox Grid.Row="1" ItemsSource="{Binding CurrentCheatSheet.Cheats}"></ListBox>
-        <ListBox Grid.Row="2" ItemsSource="{Binding CurrentCheatSheet.Sections}"></ListBox>
+        
+        <TextBlock Grid.Row="0" 
+                   Background="Aquamarine" 
+                   Text="{Binding CurrentCheatSheet.Title, Mode=OneWay}">
+        </TextBlock>
+        
+        <ItemsControl Grid.Row="1" 
+                      Background="Bisque" 
+                      ItemsSource="{Binding CurrentCheatSheet.Sections}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" 
+                               Orientation="Vertical">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </Grid>
 </UserControl>

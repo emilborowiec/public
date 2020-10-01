@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using PonderingProgrammer.QuickSheet.ViewModels;
 
 namespace PonderingProgrammer.QuickSheet.Views
 {
@@ -7,9 +6,7 @@ namespace PonderingProgrammer.QuickSheet.Views
     {
         public CheatSheetsView()
         {
-            DataContext = new CheatSheetsViewModel();
             InitializeComponent();
         }
-
     }
 }

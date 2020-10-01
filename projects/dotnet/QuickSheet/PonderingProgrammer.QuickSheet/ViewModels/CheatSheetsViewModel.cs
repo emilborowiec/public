@@ -1,34 +1,24 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using PonderingProgrammer.QuickSheet.Annotations;
-using PonderingProgrammer.QuickSheet.Model;
 using PonderingProgrammer.QuickSheet.Services;
 
 namespace PonderingProgrammer.QuickSheet.ViewModels
 {
     public sealed class CheatSheetsViewModel : INotifyPropertyChanged
     {
+        private List<CheatSheetViewModel> _cheatSheets;
         private int _currentIndex;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        
         public CheatSheetsViewModel()
         {
-            CheatSheets.CollectionChanged += OnCheatSheetsChanged;
-            foreach (var sheet in CheatSheetLoader.LoadCheatSheets())
-            {
-                CheatSheets.Add(sheet);
-            }
+            ReloadCheatSheets();
         }
-
-        private void OnCheatSheetsChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            CurrentIndex = CheatSheets.Count > 0 ? 0 : -1;
-        }
-
-        public ObservableCollection<CheatSheet> CheatSheets { get; } = new ObservableCollection<CheatSheet>();
-
+        
         public int CurrentIndex
         {
             get => _currentIndex;
@@ -38,14 +28,21 @@ namespace PonderingProgrammer.QuickSheet.ViewModels
                 _currentIndex = value;
                 OnPropertyChanged(nameof(CurrentIndex));
                 OnPropertyChanged(nameof(CurrentCheatSheet));
-                OnPropertyChanged(nameof(SheetTitle));
             }
         }
-
-        public CheatSheet CurrentCheatSheet => CurrentIndex == -1 ? null : CheatSheets[CurrentIndex];
-        public string SheetTitle => CurrentCheatSheet?.Title;
         
-        public event PropertyChangedEventHandler PropertyChanged;
+        public CheatSheetViewModel CurrentCheatSheet => CurrentIndex == -1 ? null : _cheatSheets[CurrentIndex];
+
+        private void ReloadCheatSheets()
+        {
+            _cheatSheets = new List<CheatSheetViewModel>();
+            foreach (var sheet in CheatSheetLoader.LoadCheatSheets())
+            {
+                _cheatSheets.Add(new CheatSheetViewModel(sheet));
+            }
+
+            CurrentIndex = _cheatSheets.Count > 0 ? 0 : -1;
+        }
 
         [NotifyPropertyChangedInvocator]
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
