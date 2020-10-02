@@ -15,16 +15,22 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         
+        <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        
         <DataTemplate x:Key="EntryDataTemplate">
             <TextBlock Margin="4" 
                        Padding="4,0" 
-                       Background="Azure" 
+                       FontFamily="Courier New"
                        Text="{Binding}" />
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type model:Cheat}">
             <StackPanel Orientation="Vertical">
                 <TextBlock FontSize="12" 
+                           FontWeight="Bold"
                            Text="{Binding Caption}" />
                 <ItemsControl ItemsSource="{Binding Entries}" 
                               ItemTemplate="{StaticResource EntryDataTemplate}" />
@@ -32,17 +38,22 @@
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type local:SectionViewModel}">
-            <Grid>
+            <Grid Background="Chartreuse"
+                  Margin="8 8 0 0">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" 
+                           FontWeight="Bold"
+                           Background="Coral"
+                           Padding="4"
                            Visibility="{Binding IsNotRootSection, Converter={StaticResource BoolToVisibilityConverter}}"
                            Text="{Binding Title}">
                 </TextBlock>
                 <ItemsControl 
                     Grid.Row="1" 
+                    Padding="4"
                     ItemsSource="{Binding Cheats}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -62,6 +73,10 @@
         </Grid.RowDefinitions>
         
         <TextBlock Grid.Row="0" 
+                   FontSize="20"
+                   FontWeight="Bold"
+                   TextAlignment="Center"
+                   Padding="4"
                    Background="Aquamarine" 
                    Text="{Binding CurrentCheatSheet.Title, Mode=OneWay}">
         </TextBlock>
