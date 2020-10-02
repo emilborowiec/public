@@ -1,15 +1,15 @@
-﻿<UserControl x:Class="PonderingProgrammer.QuickSheet.Views.CheatSheetsView"
+﻿<UserControl x:Class="PonderingProgrammer.QuickSheet.CheatSheetViewer.CheatSheetsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:model="clr-namespace:PonderingProgrammer.QuickSheet.Model"
-             xmlns:vm="clr-namespace:PonderingProgrammer.QuickSheet.ViewModels"
+             xmlns:local="clr-namespace:PonderingProgrammer.QuickSheet.CheatSheetViewer"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     
     <UserControl.DataContext>
-        <vm:CheatSheetsViewModel />
+        <local:CheatSheetsViewModel />
     </UserControl.DataContext>
     
     <UserControl.Resources>
@@ -31,7 +31,7 @@
             </StackPanel>
         </DataTemplate>
         
-        <DataTemplate DataType="{x:Type vm:SectionViewModel}">
+        <DataTemplate DataType="{x:Type local:SectionViewModel}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>

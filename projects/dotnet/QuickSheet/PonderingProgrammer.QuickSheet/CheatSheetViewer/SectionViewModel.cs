@@ -2,7 +2,7 @@
 using System.Drawing;
 using PonderingProgrammer.QuickSheet.Model;
 
-namespace PonderingProgrammer.QuickSheet.ViewModels
+namespace PonderingProgrammer.QuickSheet.CheatSheetViewer
 {
     public class SectionViewModel
     {

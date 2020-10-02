@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using PonderingProgrammer.QuickSheet.Annotations;
 using PonderingProgrammer.QuickSheet.Services;
 
-namespace PonderingProgrammer.QuickSheet.ViewModels
+namespace PonderingProgrammer.QuickSheet.CheatSheetViewer
 {
     public sealed class CheatSheetsViewModel : INotifyPropertyChanged
     {
