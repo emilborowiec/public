@@ -1,18 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using PonderingProgrammer.QuickSheet.Model;
 
-namespace PonderingProgrammer.QuickSheet.CheatSheetViewer
+namespace PonderingProgrammer.QuickSheet.CheatSheetPanel
 {
-    public class SectionViewModel
+    public class SectionContent
     {
-        public SectionViewModel(List<Cheat> cheats)
+        private static int GetLineCount(Cheat cheat)
+        {
+            return 1 + cheat.Entries.Count;
+        }
+
+        public SectionContent(List<Cheat> cheats)
         {
             Cheats = cheats;
             IsRootSection = true;
         }
 
-        public SectionViewModel(string title, List<Cheat> cheats)
+        public SectionContent(string title, List<Cheat> cheats)
         {
             Title = title;
             Cheats = cheats;
@@ -23,5 +29,11 @@ namespace PonderingProgrammer.QuickSheet.CheatSheetViewer
         public Color BackgroundColor { get; set; }
         public string Title { get; }
         public List<Cheat> Cheats { get; }
+        
+        public int GetLineCount()
+        {
+            return 1 + Cheats.Sum(GetLineCount);
+        }
+
     }
 }

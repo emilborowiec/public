@@ -3,7 +3,6 @@ using System.Windows.Input;
 
 namespace PonderingProgrammer.QuickSheet
 {
-
     public class DelegateCommand<T> : ICommand where T : class
     {
         private readonly Predicate<T> _canExecute;
