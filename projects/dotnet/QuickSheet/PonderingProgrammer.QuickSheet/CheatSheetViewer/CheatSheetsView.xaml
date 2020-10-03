@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:model="clr-namespace:PonderingProgrammer.QuickSheet.Model"
              xmlns:local="clr-namespace:PonderingProgrammer.QuickSheet.CheatSheetViewer"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -12,25 +13,51 @@
         <local:CheatSheetsViewModel />
     </UserControl.DataContext>
     
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding UpdateSizeCommand}"></b:InvokeCommandAction>
+        </b:EventTrigger>
+        <b:EventTrigger EventName="SizeChanged">
+            <b:InvokeCommandAction Command="{Binding UpdateSizeCommand}"></b:InvokeCommandAction>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
+    
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         
-        <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
+        <Style TargetType="{x:Type TextBlock}" x:Key="TitleStyle">
             <Setter Property="FontFamily" Value="Arial" />
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="{Binding TitleFontSize}" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        
+        <Style TargetType="{x:Type TextBlock}" x:Key="SectionNameStyle">
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="FontSize" Value="{Binding DataContext.SectionFontSize, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        
+        <Style TargetType="{x:Type TextBlock}" x:Key="CaptionStyle">
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="FontSize" Value="{Binding DataContext.CaptionFontSize, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        
+        <Style TargetType="{x:Type TextBlock}" x:Key="EntryStyle">
+            <Setter Property="FontFamily" Value="Courier New" />
+            <Setter Property="FontSize" Value="{Binding DataContext.EntryFontSize, RelativeSource={RelativeSource AncestorType=UserControl}}" />
         </Style>
         
         <DataTemplate x:Key="EntryDataTemplate">
             <TextBlock Margin="4" 
                        Padding="4,0" 
-                       FontFamily="Courier New"
+                       Style="{StaticResource EntryStyle}"
                        Text="{Binding}" />
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type model:Cheat}">
             <StackPanel Orientation="Vertical">
-                <TextBlock FontSize="12" 
-                           FontWeight="Bold"
+                <TextBlock Style="{StaticResource CaptionStyle}"
                            Text="{Binding Caption}" />
                 <ItemsControl ItemsSource="{Binding Entries}" 
                               ItemTemplate="{StaticResource EntryDataTemplate}" />
@@ -45,7 +72,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" 
-                           FontWeight="Bold"
+                           Style="{StaticResource SectionNameStyle}"
                            Background="Coral"
                            Padding="4"
                            Visibility="{Binding IsNotRootSection, Converter={StaticResource BoolToVisibilityConverter}}"
@@ -72,9 +99,8 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         
-        <TextBlock Grid.Row="0" 
-                   FontSize="20"
-                   FontWeight="Bold"
+        <TextBlock Grid.Row="0"
+                   Style="{StaticResource TitleStyle}"
                    TextAlignment="Center"
                    Padding="4"
                    Background="Aquamarine" 
