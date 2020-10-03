@@ -61,7 +61,7 @@
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type cheatSheetPanel:SectionContent}">
-            <Grid Background="Chartreuse"
+            <Grid Background="White"
                   Margin="8 8 0 0">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -69,7 +69,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" 
                            Style="{StaticResource SectionNameStyle}"
-                           Background="Coral"
+                           Background="#A3CEF1"
                            Padding="4"
                            Visibility="{Binding IsNotRootSection, Converter={StaticResource BoolToVisibilityConverter}}"
                            Text="{Binding Title}">
@@ -99,12 +99,12 @@
                    Style="{StaticResource TitleStyle}"
                    TextAlignment="Center"
                    Padding="4"
-                   Background="Aquamarine" 
+                   Background="#6096BA" 
                    Text="{Binding CheatSheet.Title, Mode=OneWay}">
         </TextBlock>
         
         <ItemsControl Grid.Row="1" 
-                      Background="Bisque" 
+                      Background="#E7ECEF" 
                       ItemsSource="{Binding Sections}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
