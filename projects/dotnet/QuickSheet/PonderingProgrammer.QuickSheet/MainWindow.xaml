@@ -6,13 +6,16 @@
         xmlns:local="clr-namespace:PonderingProgrammer.QuickSheet"
         xmlns:cs="clr-namespace:PonderingProgrammer.QuickSheet.CheatSheetPanel"
         mc:Ignorable="d"
-        Title="QuickSheet" Height="450" Width="800">
+        Title="QuickSheet" Height="450" Width="800"
+        WindowState="Maximized"
+        WindowStyle="None">
     
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
     
     <Window.InputBindings>
+        <KeyBinding Key="Escape" Command="{Binding ExitCommand}"></KeyBinding>
         <KeyBinding Key="Left" Command="{Binding SwitchSheetCommand}" CommandParameter="left" />
         <KeyBinding Key="Right" Command="{Binding SwitchSheetCommand}" CommandParameter="right" />
     </Window.InputBindings>

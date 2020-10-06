@@ -5,10 +5,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
-using Microsoft.Win32;
 using PonderingProgrammer.QuickSheet.Annotations;
 using PonderingProgrammer.QuickSheet.CheatSheetPanel;
 using PonderingProgrammer.QuickSheet.Model;
@@ -26,6 +25,7 @@ namespace PonderingProgrammer.QuickSheet
             _cheatSheetViewModel = new CheatSheetViewModel();
             SwitchSheetCommand = new DelegateCommand<string>(SwitchSheet);
             OpenDialogCommand = new DelegateCommand<Tuple<string, string>>(OpenDialog);
+            ExitCommand = new DelegateCommand(Exit);
             ReloadCheatSheets();
         }
 
@@ -38,6 +38,7 @@ namespace PonderingProgrammer.QuickSheet
         public DelegateCommand<string> SwitchSheetCommand { get; }
         
         public DelegateCommand<Tuple<string, string>> OpenDialogCommand { get; } 
+        public DelegateCommand ExitCommand { get; } 
 
         public CheatSheet CurrentCheatSheet => CurrentIndex == -1 ? null : _cheatSheets[CurrentIndex];
 
@@ -132,6 +133,11 @@ namespace PonderingProgrammer.QuickSheet
         {
             var (title, message) = titleAndMessage;
             DialogService.OpenDialog(new DialogViewModel {Title = title, Message = message});
+        }
+
+        private void Exit()
+        {
+            Application.Current.Shutdown();
         }
 
         [NotifyPropertyChangedInvocator]

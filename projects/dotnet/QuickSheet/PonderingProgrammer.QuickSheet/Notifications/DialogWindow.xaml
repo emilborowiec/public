@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:PonderingProgrammer.QuickSheet.Notifications"
         mc:Ignorable="d"
         Title="DialogWindow" Height="450" Width="800"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None">
+    
+    <Window.InputBindings>
+        <KeyBinding Key="Escape" Command="{Binding ExitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}"></KeyBinding>
+    </Window.InputBindings>
     <local:DialogView DataContext="{Binding}" />
 </Window>
