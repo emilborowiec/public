@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using PonderingProgrammer.QuickSheet.Model;
 
@@ -10,16 +9,35 @@ namespace PonderingProgrammer.QuickSheet.Services
     public static class CheatSheetLoader
     {
         private const string QuickSheetsFolderName = "My QuickSheets";
-        
-        public static List<CheatSheet> LoadCheatSheets()
-        {
-            var list = new List<CheatSheet>();
-            
-            var quickSheetsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + Path.DirectorySeparatorChar + QuickSheetsFolderName;
-            if (!Directory.Exists(quickSheetsPath)) return list;
 
-            var qsheetFiles = Directory.EnumerateFiles(quickSheetsPath, "*.qsheet", SearchOption.TopDirectoryOnly);
-            list.AddRange(qsheetFiles.Select(LoadSheet).Where(sheet => sheet != null));
+        public static List<Result<CheatSheet>> LoadCheatSheets()
+        {
+            var list = new List<Result<CheatSheet>>();
+
+                var quickSheetsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                      Path.DirectorySeparatorChar + QuickSheetsFolderName;
+                if (!Directory.Exists(quickSheetsPath)) return list;
+
+                var qsheetFiles = Directory.EnumerateFiles(quickSheetsPath, "*.qsheet", SearchOption.TopDirectoryOnly);
+                foreach (var file in qsheetFiles)
+                {
+                    try
+                    {
+                        var sheet = LoadSheet(file);
+                        if (sheet != null)
+                        {
+                            list.Add(Result<CheatSheet>.Success(sheet));
+                        }
+                        else
+                        {
+                            list.Add(Result<CheatSheet>.Failure("Failed to parse QuickSheet file", file));
+                        }
+                    }
+                    catch (FileFormatException e)
+                    {
+                        list.Add(Result<CheatSheet>.Failure(e.Message, file));
+                    }
+                }
 
             return list;
         }
@@ -27,7 +45,7 @@ namespace PonderingProgrammer.QuickSheet.Services
         private static CheatSheet LoadSheet(string path)
         {
             var lines = File.ReadLines(path, Encoding.UTF8);
-            
+
             return ParseCheatSheet(lines);
         }
 

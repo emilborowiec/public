@@ -1,11 +1,18 @@
 ﻿#region
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Threading;
+using Microsoft.Win32;
 using PonderingProgrammer.QuickSheet.Annotations;
 using PonderingProgrammer.QuickSheet.CheatSheetPanel;
 using PonderingProgrammer.QuickSheet.Model;
+using PonderingProgrammer.QuickSheet.Notifications;
 using PonderingProgrammer.QuickSheet.Services;
 
 #endregion
@@ -18,15 +25,19 @@ namespace PonderingProgrammer.QuickSheet
         {
             _cheatSheetViewModel = new CheatSheetViewModel();
             SwitchSheetCommand = new DelegateCommand<string>(SwitchSheet);
+            OpenDialogCommand = new DelegateCommand<Tuple<string, string>>(OpenDialog);
             ReloadCheatSheets();
         }
 
         private List<CheatSheet> _cheatSheets;
         private int _currentIndex;
         private CheatSheetViewModel _cheatSheetViewModel;
+        private List<Result<CheatSheet>> _errors;
 
 
         public DelegateCommand<string> SwitchSheetCommand { get; }
+        
+        public DelegateCommand<Tuple<string, string>> OpenDialogCommand { get; } 
 
         public CheatSheet CurrentCheatSheet => CurrentIndex == -1 ? null : _cheatSheets[CurrentIndex];
 
@@ -51,19 +62,41 @@ namespace PonderingProgrammer.QuickSheet
             }
         }
 
+        public List<Result<CheatSheet>> Errors
+        {
+            get => _errors;
+            set
+            {
+                _errors = value;
+                OnPropertyChanged(nameof(Errors));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
 
         private void ReloadCheatSheets()
         {
             _cheatSheets = new List<CheatSheet>();
-            foreach (var sheet in CheatSheetLoader.LoadCheatSheets())
+            var results = CheatSheetLoader.LoadCheatSheets();
+            var cheatSheets = results.Where(r => r.IsSuccess).Select(r => r.Data);
+            foreach (var sheet in cheatSheets)
             {
                 _cheatSheets.Add(sheet);
             }
 
             CurrentIndex = _cheatSheets.Count > 0 ? 0 : -1;
             CheatSheetViewModel.CheatSheet = CurrentCheatSheet;
+
+            Errors = results.Where(r => r.IsSuccess != true).ToList();
+            if (Errors.Count > 0)
+            {
+                Dispatcher.CurrentDispatcher.BeginInvoke((Action)(async () =>
+                {
+                    await Task.Delay(1000);
+                    OpenDialog(new Tuple<string, string>("Some Quick Sheets failed to load", string.Join('\n', Errors.Select(e => e.Source + ": " + e.Message))));
+                }));
+            }
         }
 
         private void SwitchSheet(string directionString)
@@ -93,6 +126,12 @@ namespace PonderingProgrammer.QuickSheet
             }
 
             CheatSheetViewModel.CheatSheet = CurrentCheatSheet;
+        }
+
+        private void OpenDialog(Tuple<string, string> titleAndMessage)
+        {
+            var (title, message) = titleAndMessage;
+            DialogService.OpenDialog(new DialogViewModel {Title = title, Message = message});
         }
 
         [NotifyPropertyChangedInvocator]
