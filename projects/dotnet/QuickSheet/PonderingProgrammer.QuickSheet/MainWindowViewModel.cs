@@ -24,7 +24,6 @@ namespace PonderingProgrammer.QuickSheet
         {
             _cheatSheetViewModel = new CheatSheetViewModel();
             SwitchSheetCommand = new DelegateCommand<string>(SwitchSheet);
-            OpenDialogCommand = new DelegateCommand<Tuple<string, string>>(OpenDialog);
             ExitCommand = new DelegateCommand(Exit);
             ReloadCheatSheets();
         }
@@ -37,7 +36,6 @@ namespace PonderingProgrammer.QuickSheet
 
         public DelegateCommand<string> SwitchSheetCommand { get; }
         
-        public DelegateCommand<Tuple<string, string>> OpenDialogCommand { get; } 
         public DelegateCommand ExitCommand { get; } 
 
         public CheatSheet CurrentCheatSheet => CurrentIndex == -1 ? null : _cheatSheets[CurrentIndex];
@@ -95,7 +93,7 @@ namespace PonderingProgrammer.QuickSheet
                 Dispatcher.CurrentDispatcher.BeginInvoke((Action)(async () =>
                 {
                     await Task.Delay(1000);
-                    OpenDialog(new Tuple<string, string>("Some Quick Sheets failed to load", string.Join('\n', Errors.Select(e => e.Source + ": " + e.Message))));
+                    OpenDialog("Some Quick Sheets failed to load", string.Join('\n', Errors.Select(e => e.Source + " - " + e.Message)));
                 }));
             }
         }
@@ -129,9 +127,8 @@ namespace PonderingProgrammer.QuickSheet
             CheatSheetViewModel.CheatSheet = CurrentCheatSheet;
         }
 
-        private void OpenDialog(Tuple<string, string> titleAndMessage)
+        private void OpenDialog(string title, string message)
         {
-            var (title, message) = titleAndMessage;
             DialogService.OpenDialog(new DialogViewModel {Title = title, Message = message});
         }
 

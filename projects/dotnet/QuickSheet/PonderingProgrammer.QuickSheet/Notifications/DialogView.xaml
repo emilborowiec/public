@@ -7,7 +7,14 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel Orientation="Vertical">
-        <TextBlock Text="{Binding Title}" />
-        <TextBlock Text="{Binding Message}" />
+        <TextBlock Background="#6096BA"
+                   FontWeight="Bold"
+                   FontSize="20"
+                   Padding="12"
+                   Text="{Binding Title}" />
+        <TextBlock Background="#E7ECEF"
+                   FontSize="12"
+                   Padding="12"
+                   Text="{Binding Message}" />
     </StackPanel>
 </UserControl>

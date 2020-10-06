@@ -35,7 +35,7 @@ namespace PonderingProgrammer.QuickSheet.Services
                     }
                     catch (FileFormatException e)
                     {
-                        list.Add(Result<CheatSheet>.Failure(e.Message, file));
+                        list.Add(Result<CheatSheet>.Failure(e.Message, Path.GetFileName(file)));
                     }
                 }
 
