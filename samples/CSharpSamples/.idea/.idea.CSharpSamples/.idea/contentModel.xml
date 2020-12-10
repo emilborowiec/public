@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\emilb\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\emilb\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_CSharpSamples.-935566917.00" t="ExcludeRecursive" />
+    <e p="C:\Users\emilb\dev\public\samples\CSharpSamples" t="IncludeFlat">
+      <e p="aspnet" t="Include" />
+      <e p="CSharpSamples.sln" t="IncludeFlat" />
+      <e p="wpf" t="Include" />
+      <e p="xunit" t="Include" />
+    </e>
+  </component>
+</project>
