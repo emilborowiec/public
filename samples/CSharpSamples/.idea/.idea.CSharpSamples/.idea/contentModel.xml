@@ -5,8 +5,42 @@
     <e p="C:\Users\emilb\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_CSharpSamples.-935566917.00" t="ExcludeRecursive" />
     <e p="C:\Users\emilb\dev\public\samples\CSharpSamples" t="IncludeFlat">
       <e p="aspnet" t="Include" />
+      <e p="csharp" t="Include">
+        <e p="CSharpLanguageFeatures" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Class1.cs" t="Include" />
+          <e p="CSharpLanguageFeatures.csproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.1" t="Include">
+                <e p="CSharpLanguageFeatures.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="CSharpSamples.sln" t="IncludeFlat" />
-      <e p="wpf" t="Include" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="wpf" t="Include">
+        <e p="DrawingOnCanvas" t="IncludeRecursive">
+          <e p="App.xaml" t="Include" />
+          <e p="App.xaml.cs" t="Include" />
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="DrawingOnCanvas.csproj" t="IncludeRecursive" />
+          <e p="MainWindow.xaml" t="Include" />
+          <e p="MainWindow.xaml.cs" t="Include" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.1" t="Include">
+                <e p="App.g.cs" t="Include" />
+                <e p="DrawingOnCanvas.AssemblyInfo.cs" t="Include" />
+                <e p="MainWindow.g.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="xunit" t="Include" />
     </e>
   </component>
